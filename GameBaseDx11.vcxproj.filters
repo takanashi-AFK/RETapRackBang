@@ -142,6 +142,7 @@
       <Filter>Game\Stage</Filter>
     </ClCompile>
     <ClCompile Include="Game\Target\SphereTarget.cpp" />
+    <ClCompile Include="Engine\Json\JsonReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -251,6 +252,8 @@
       <Filter>Game\Stage</Filter>
     </ClInclude>
     <ClInclude Include="Game\Target\SphereTarget.h" />
+    <ClInclude Include="Engine\Json\JsonReader.h" />
+    <ClInclude Include="Engine\Json\json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
