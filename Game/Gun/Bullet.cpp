@@ -8,10 +8,9 @@ Bullet::Bullet(GameObject* parent)
 
 void Bullet::Initialize()
 {
-
-	collision = new SphereCollider(transform_.position_, 0.3f);
+	collision = new SphereCollider(transform_.position_, 0.05f);
 	AddCollider(collision);
-	transform_.scale_ = { .3f,.3f,.3f };
+	camPos_ = Camera::GetPosition();
 }
 
 void Bullet::Update()
@@ -33,7 +32,7 @@ void Bullet::Release()
 
 void Bullet::Shot(XMVECTOR direction)
 {
-	transform_.position_ = Camera::GetPosition();
+	transform_.position_ = camPos_;
 	XMVECTOR shotVec = direction;
 	XMStoreFloat3(&move_, XMVector3Normalize(-shotVec) * BULLET_SPEED);
 }

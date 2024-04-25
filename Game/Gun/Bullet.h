@@ -8,8 +8,9 @@ class Bullet : public GameObject
 private:
 	XMFLOAT3 move_;
 	SphereCollider* collision;
+	XMFLOAT3 camPos_;
 
-	const float BULLET_SPEED = 3.0f;
+	const float BULLET_SPEED = 0.05f;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

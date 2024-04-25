@@ -1,6 +1,7 @@
 #include "SimpleStage.h"
 #include "../../Engine/Model.h"
-SimpleStage::SimpleStage(GameObject* parent)
+SimpleStage::SimpleStage(GameObject* parent):
+	GameObject(parent,"SimpleStage")
 {
 }
 
