@@ -19,6 +19,7 @@ void TestScene::Initialize()
 //çXêV
 void TestScene::Update()
 {
+	ReGenerateSphereTarget();
 }
 
 //ï`âÊ
@@ -29,6 +30,12 @@ void TestScene::Draw()
 //äJï˙
 void TestScene::Release()
 {
+}
+
+void TestScene::OnAction(XMFLOAT3 pos)
+{
+	brokenTargetPos_ = pos;
+	isTargetBroken_ = true;
 }
 
 void TestScene::GenerateSphereTarget()
@@ -76,5 +83,32 @@ void TestScene::GenerateSphereTarget()
 	//	}
 	//}
 
+}
+
+void TestScene::ReGenerateSphereTarget()
+{
+	if (isTargetBroken_) {
+
+		for (int i = 0; i < 3; i++)
+			if (brokenTargetPos_.x == previousPos_[i].x && brokenTargetPos_.y == previousPos_[i].y)
+				brokenTarget_ = i;
+
+		//Ç‡ÇµÇPÇ∆ÅAÇQÇ∆èdÇ»Ç¡ÇƒÇΩÇÁ
+		do {
+			xPos_ = rand() % PLACE_SIZE;
+			yPos_ = rand() % PLACE_SIZE;
+		} while (previousPos_[0].x == targetPlace_[xPos_][yPos_].x &&
+			previousPos_[0].y == targetPlace_[xPos_][yPos_].y ||
+			previousPos_[1].x == targetPlace_[xPos_][yPos_].x &&
+			previousPos_[1].y == targetPlace_[xPos_][yPos_].y ||
+			previousPos_[2].x == targetPlace_[xPos_][yPos_].x &&
+			previousPos_[2].y == targetPlace_[xPos_][yPos_].y);
+
+		pSp[brokenTarget_] = Instantiate<SphereTarget>(this);
+		pSp[brokenTarget_]->SetPosition(targetPlace_[xPos_][yPos_]);
+		previousPos_[brokenTarget_] = targetPlace_[xPos_][yPos_];
+
+		isTargetBroken_ = false;
+	}
 }
 

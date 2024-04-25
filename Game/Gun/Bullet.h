@@ -9,7 +9,7 @@ private:
 	XMFLOAT3 move_;
 	SphereCollider* collision;
 
-	const float BULLET_SPEED = 5;
+	const float BULLET_SPEED = 3.0f;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

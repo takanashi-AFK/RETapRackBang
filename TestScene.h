@@ -15,9 +15,13 @@ class TestScene : public GameObject
 private:
 	SphereTarget* pSp[9];
 	XMFLOAT3 targetPlace_[PLACE_SIZE][PLACE_SIZE];
-	std::array<XMFLOAT3, 3> previousPos_;
-	int xPos_, yPos_;
+	XMFLOAT3 brokenTargetPos_;
 
+	std::array<XMFLOAT3, 3> previousPos_;
+
+	int xPos_, yPos_;
+	int brokenTarget_;
+	bool isTargetBroken_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -35,5 +39,9 @@ public:
 	//開放
 	void Release() override;
 
+	void OnAction(XMFLOAT3 pos)override;
+
 	void GenerateSphereTarget();
+
+	void ReGenerateSphereTarget();
 };

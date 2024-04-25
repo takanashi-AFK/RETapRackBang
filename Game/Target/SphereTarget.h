@@ -1,6 +1,7 @@
 #pragma once
 #include"../../Engine/GameObject.h"
 #include"../../Engine/SphereCollider.h"
+
 class SphereTarget:public GameObject
 {
 private:
@@ -18,8 +19,6 @@ public:
 
 	//•`‰æ
 	void Draw() override;
-
-	
 
 	//ŠJ•ú
 	void Release() override;
