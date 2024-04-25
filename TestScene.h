@@ -16,6 +16,7 @@ private:
 	SphereTarget* pSp[9];
 	XMFLOAT3 targetPlace_[PLACE_SIZE][PLACE_SIZE];
 	std::array<XMFLOAT3, 3> previousPos_;
+	int xPos_, yPos_;
 
 public:
 	//コンストラクタ

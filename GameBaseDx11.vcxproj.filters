@@ -39,6 +39,9 @@
     <Filter Include="Game\Stage">
       <UniqueIdentifier>{ace8a56c-93a9-4abd-bf6f-7c84b000dc01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01Engine\Json">
+      <UniqueIdentifier>{4bbcf85f-a1da-45ca-a7cb-1639fd1162ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -142,7 +145,9 @@
       <Filter>Game\Stage</Filter>
     </ClCompile>
     <ClCompile Include="Game\Target\SphereTarget.cpp" />
-    <ClCompile Include="Engine\Json\JsonReader.cpp" />
+    <ClCompile Include="Engine\Json\JsonReader.cpp">
+      <Filter>01Engine\Json</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -252,8 +257,12 @@
       <Filter>Game\Stage</Filter>
     </ClInclude>
     <ClInclude Include="Game\Target\SphereTarget.h" />
-    <ClInclude Include="Engine\Json\JsonReader.h" />
-    <ClInclude Include="Engine\Json\json.hpp" />
+    <ClInclude Include="Engine\Json\json.hpp">
+      <Filter>01Engine\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Json\JsonReader.h">
+      <Filter>01Engine\Json</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

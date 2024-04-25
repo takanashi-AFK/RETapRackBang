@@ -19,6 +19,8 @@ public:
 	//•`‰æ
 	void Draw() override;
 
+	
+
 	//ŠJ•ú
 	void Release() override;
 

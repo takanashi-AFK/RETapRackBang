@@ -35,6 +35,10 @@ void SphereTarget::Release()
 
 void SphereTarget::OnCollision(GameObject* pTarget)
 {
-	
+	if (pTarget->GetObjectName() == "Bullet")
+	{
+		KillMe();
+		pTarget->KillMe();
+	}
 }
 
