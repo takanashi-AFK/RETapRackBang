@@ -10,12 +10,16 @@ const float PLACE_OUTSET{ 3.f };
 const float PLACE_HEIGHT_OUTSET{ 5 };
 const float PLACE_DEPTH{ 35 };
 
+
 class TestScene : public GameObject
 {
 private:
 	std::array<SphereTarget*,3> pSp;
 	XMFLOAT3 targetPlace_[PLACE_SIZE][PLACE_SIZE];
 	XMFLOAT3 brokenTargetPos_;
+
+	int screenWidth;		//スクリーンの幅
+	int screenHeight;	//スクリーンの高さ
 
 	std::array<XMFLOAT3, 3> previousPos_;
 

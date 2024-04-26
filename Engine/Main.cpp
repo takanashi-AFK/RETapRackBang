@@ -302,7 +302,8 @@ void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight)
 		SetWindowLong(hWnd, GWL_EXSTYLE, GetWindowLong(hWnd, GWL_EXSTYLE) | WS_EX_TOPMOST);
 		ShowWindow(hWnd, SW_MAXIMIZE);
 		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXMAXIMIZED), GetSystemMetrics(SM_CYMAXIMIZED), SWP_FRAMECHANGED);
-		ShowCursor(true);
+		ShowCursor(false);
+		
 	}
 	else {
 		DWORD dwStyle = WS_OVERLAPPEDWINDOW | WS_VISIBLE;

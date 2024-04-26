@@ -146,6 +146,7 @@
       <Filter>01Engine\Json</Filter>
     </ClCompile>
     <ClCompile Include="Game\UI\CrossHair.cpp" />
+    <ClCompile Include="SkySphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -259,6 +260,7 @@
       <Filter>01Engine\Json</Filter>
     </ClInclude>
     <ClInclude Include="Game\UI\CrossHair.h" />
+    <ClInclude Include="SkySphere.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
@@ -271,6 +273,9 @@
       <Filter>02Shader</Filter>
     </FxCompile>
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">
+      <Filter>02Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="Assets\Shader\NoShadow.hlsl">
       <Filter>02Shader</Filter>
     </FxCompile>
   </ItemGroup>

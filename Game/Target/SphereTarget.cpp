@@ -16,9 +16,6 @@ void SphereTarget::Initialize()
 
 void SphereTarget::Update()
 {
-	ImGui::Begin("Target");
-	ImGui::DragFloat3("pos", &transform_.position_.x);
-	ImGui::End();
 }
 
 void SphereTarget::Draw()

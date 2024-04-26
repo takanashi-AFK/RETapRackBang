@@ -160,6 +160,7 @@
     <ClCompile Include="Game\Player\Player.cpp" />
     <ClCompile Include="Game\Stage\SimpleStage.cpp" />
     <ClCompile Include="Game\Target\SphereTarget.cpp" />
+    <ClCompile Include="SkySphere.cpp" />
     <ClCompile Include="TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +202,7 @@
     <ClInclude Include="Game\Player\Player.h" />
     <ClInclude Include="Game\Stage\SimpleStage.h" />
     <ClInclude Include="Game\Target\SphereTarget.h" />
+    <ClInclude Include="SkySphere.h" />
     <ClInclude Include="TestScene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +222,14 @@
     <FxCompile Include="Assets\Shader\Simple3D.hlsl">
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS</EntryPointName>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS</EntryPointName>
+    </FxCompile>
+    <FxCompile Include="Assets\Shader\NoShadow.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS</EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS</EntryPointName>
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
