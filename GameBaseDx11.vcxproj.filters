@@ -148,6 +148,7 @@
     <ClCompile Include="Engine\Json\JsonReader.cpp">
       <Filter>01Engine\Json</Filter>
     </ClCompile>
+    <ClCompile Include="Game\UI\CrossHair.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -263,6 +264,7 @@
     <ClInclude Include="Engine\Json\JsonReader.h">
       <Filter>01Engine\Json</Filter>
     </ClInclude>
+    <ClInclude Include="Game\UI\CrossHair.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

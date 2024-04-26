@@ -24,6 +24,8 @@ public:
 	void Release() override;
 
 	//è’ìÀÇµÇΩÇÁ
-	void OnCollision(GameObject* pTarget)override;
+	void IsHit();
+
+	int GetModelHandle() {return targetModelHandle_; }
 };
 

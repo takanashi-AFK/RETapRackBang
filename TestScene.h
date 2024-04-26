@@ -13,7 +13,7 @@ const float PLACE_DEPTH{ 35 };
 class TestScene : public GameObject
 {
 private:
-	SphereTarget* pSp[9];
+	std::array<SphereTarget*,3> pSp;
 	XMFLOAT3 targetPlace_[PLACE_SIZE][PLACE_SIZE];
 	XMFLOAT3 brokenTargetPos_;
 
@@ -44,4 +44,6 @@ public:
 	void GenerateSphereTarget();
 
 	void ReGenerateSphereTarget();
+
+	std::array<SphereTarget*, 3> GetSphereTarget() { return pSp; }
 };

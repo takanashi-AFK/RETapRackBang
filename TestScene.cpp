@@ -1,6 +1,7 @@
 #include "TestScene.h"
 #include "Game/Stage/SimpleStage.h"
 #include "Game/Player/Player.h"
+#include "Game/UI/CrossHair.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject * parent)
@@ -13,7 +14,9 @@ void TestScene::Initialize()
 {
 	Instantiate<SimpleStage>(this);
 	Instantiate<Player>(this);
+	//Instantiate<SphereTarget>(this);
 	GenerateSphereTarget();
+	Instantiate<CrossHair>(this);
 }
 
 //更新
@@ -111,4 +114,5 @@ void TestScene::ReGenerateSphereTarget()
 		isTargetBroken_ = false;
 	}
 }
+
 

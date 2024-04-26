@@ -1,15 +1,15 @@
 #pragma once
 #include "../../Engine/GameObject.h"
-
+#include "../../Engine/Image.h"
 //テストシーンを管理するクラス
-class SimpleStage : public GameObject
+class CrossHair : public GameObject
 {
 private:
-	int stageModelHandle_;
+	int crosshairImage_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	SimpleStage(GameObject* parent);
+	CrossHair(GameObject* parent);
 
 	//初期化
 	void Initialize() override;
@@ -23,5 +23,4 @@ public:
 	//開放
 	void Release() override;
 
-	int GetModelHandle() { return stageModelHandle_; }
 };

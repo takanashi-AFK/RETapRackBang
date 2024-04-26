@@ -44,4 +44,6 @@ public:
 	void PlayerMove();
 
 	void TPSCam();
+
+	XMVECTOR GetPlayerVector() { return playerVec_; }
 };

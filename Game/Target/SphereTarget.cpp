@@ -11,9 +11,6 @@ void SphereTarget::Initialize()
 {
 	targetModelHandle_ = Model::Load("targetB.fbx");
 	assert(targetModelHandle_ >= 0);
-
-	SphereCollider* spc = new SphereCollider(XMFLOAT3(0, 0, 0),1.f);
-	AddCollider(spc);
 }
 
 void SphereTarget::Update()
@@ -35,15 +32,12 @@ void SphereTarget::Release()
 
 
 
-void SphereTarget::OnCollision(GameObject* pTarget)
+void SphereTarget::IsHit()
 {
 	TestScene* testScene = (TestScene*)FindObject("TestScene");
-	if (pTarget->GetObjectName() == "Bullet")
-	{
-		KillMe();
-		pTarget->KillMe();
-		XMFLOAT3 pos = transform_.position_;
-		testScene->OnAction(pos);
-	}
+
+	KillMe();
+	XMFLOAT3 pos = transform_.position_;
+	testScene->OnAction(pos);
 }
 

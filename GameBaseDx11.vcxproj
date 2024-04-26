@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\UI\CrossHair.cpp" />
     <ClCompile Include="Engine\ImGui\imgui.cpp" />
     <ClCompile Include="Engine\ImGui\imgui_draw.cpp" />
     <ClCompile Include="Engine\ImGui\imgui_impl_dx11.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\UI\CrossHair.h" />
     <ClInclude Include="Engine\ImGui\imconfig.h" />
     <ClInclude Include="Engine\ImGui\imgui.h" />
     <ClInclude Include="Engine\ImGui\imgui_impl_dx11.h" />

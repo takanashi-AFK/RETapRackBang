@@ -8,7 +8,7 @@ Bullet::Bullet(GameObject* parent)
 
 void Bullet::Initialize()
 {
-	collision = new SphereCollider(transform_.position_, 0.05f);
+	collision = new SphereCollider(transform_.position_, 0.9);
 	AddCollider(collision);
 	camPos_ = Camera::GetPosition();
 }
