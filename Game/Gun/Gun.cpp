@@ -1,5 +1,4 @@
 #include "Gun.h"
-#include "Bullet.h"
 #include "../Target/SphereTarget.h"
 #include "../../Engine/Model.h"
 #include "../../Engine/Camera.h"
@@ -9,14 +8,15 @@
 #include "../../TestScene.h"
 
 Gun::Gun(GameObject* parent) :
-	GameObject(parent, "Gun")
+	GameObject(parent, "Gun"),
+	gunModelHandle_(-1)
 {
 }
 
 void Gun::Initialize()
 {
-	GunModelHandle_ = Model::Load("Player/blasterM.fbx");
-	assert(GunModelHandle_ >= 0);
+	gunModelHandle_ = Model::Load("Player/blasterM.fbx");
+	assert(gunModelHandle_ >= 0);
 }
 
 void Gun::Update()
@@ -48,6 +48,7 @@ void Gun::Update()
 				}
 			}
 			
+
 			//vectorを取得
 			//そのリストすべてに対してレイを撃つ
 			//当たったらそのターゲットを破壊
@@ -62,8 +63,8 @@ void Gun::Update()
 
 void Gun::Draw()
 {
-	Model::SetTransform(GunModelHandle_, transform_);
-	Model::Draw(GunModelHandle_);
+	Model::SetTransform(gunModelHandle_, transform_);
+	Model::Draw(gunModelHandle_);
 }
 
 void Gun::Release()

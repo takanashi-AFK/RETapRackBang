@@ -4,8 +4,14 @@
 #include "Game/UI/CrossHair.h"
 
 //コンストラクタ
-TestScene::TestScene(GameObject * parent)
-	: GameObject(parent, "TestScene")
+TestScene::TestScene(GameObject* parent)
+	: GameObject(parent, "TestScene"),
+	brokenTargetPos_{},
+	brokenTarget_{},
+	isTargetBroken_(false), 
+	pSp{},previousPos_{},
+	targetPlace_{},
+	xPos_{},yPos_{}
 {
 }
 

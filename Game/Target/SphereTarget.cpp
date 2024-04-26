@@ -3,7 +3,8 @@
 #include "../../Engine/ImGui/imgui.h"
 #include "../../TestScene.h"
 SphereTarget::SphereTarget(GameObject* parent):
-	GameObject(parent,"SphereTarget")
+	GameObject(parent,"SphereTarget"),
+	targetModelHandle_(-1)
 {
 }
 

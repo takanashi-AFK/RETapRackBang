@@ -6,7 +6,11 @@
 #include "../Gun/Gun.h"
 
 Player::Player(GameObject* parent) :
-	GameObject(parent, "Player")
+	GameObject(parent, "Player"),
+	newCenter_{},
+	pModelHandle_(-1),
+	playerVec_{},
+	rotateAngle_{}
 {
 }
 

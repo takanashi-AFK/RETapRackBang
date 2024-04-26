@@ -3,7 +3,7 @@
 class Gun : public GameObject
 {
 private:
-	int GunModelHandle_;
+	int gunModelHandle_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

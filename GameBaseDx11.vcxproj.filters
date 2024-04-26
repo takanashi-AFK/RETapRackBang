@@ -138,9 +138,6 @@
     <ClCompile Include="Game\Gun\Gun.cpp">
       <Filter>Game\Gun</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Gun\Bullet.cpp">
-      <Filter>Game\Gun</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Stage\SimpleStage.cpp">
       <Filter>Game\Stage</Filter>
     </ClCompile>
@@ -247,9 +244,6 @@
     </ClInclude>
     <ClInclude Include="Game\Player\Player.h">
       <Filter>Game\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Gun\Bullet.h">
-      <Filter>Game\Gun</Filter>
     </ClInclude>
     <ClInclude Include="Game\Gun\Gun.h">
       <Filter>Game\Gun</Filter>

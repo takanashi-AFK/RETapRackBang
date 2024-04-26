@@ -1,6 +1,8 @@
 #include "CrossHair.h"
 
-CrossHair::CrossHair(GameObject* parent)
+CrossHair::CrossHair(GameObject* parent):
+	GameObject(parent,"CrossHair"),
+	crosshairImage_{}
 {
 }
 
