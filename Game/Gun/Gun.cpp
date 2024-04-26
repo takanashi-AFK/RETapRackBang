@@ -54,7 +54,7 @@ void Gun::Update()
 		}
 		
 
-
+		auto i = 0;
 	}
 
 	

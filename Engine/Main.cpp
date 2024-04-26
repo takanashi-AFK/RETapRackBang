@@ -189,9 +189,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 
 
-
-				//‚¿‚å‚Á‚Æ‹x‚Ü‚¹‚é
 				Sleep(1);
+			
 			}
 			timeEndPeriod(1);	//ŠÔŒv‘ª‚Ì§“x‚ğ–ß‚·
 		}
