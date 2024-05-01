@@ -161,6 +161,7 @@
     <ClCompile Include="Game\Stage\SimpleStage.cpp" />
     <ClCompile Include="Game\Target\SphereTarget.cpp" />
     <ClCompile Include="Game\Stage\SkySphere.cpp" />
+    <ClCompile Include="Game\Target\TargetManager.cpp" />
     <ClCompile Include="TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +204,7 @@
     <ClInclude Include="Game\Stage\SimpleStage.h" />
     <ClInclude Include="Game\Target\SphereTarget.h" />
     <ClInclude Include="Game\Stage\SkySphere.h" />
+    <ClInclude Include="Game\Target\TargetManager.h" />
     <ClInclude Include="TestScene.h" />
   </ItemGroup>
   <ItemGroup>

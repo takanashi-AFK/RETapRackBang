@@ -9,15 +9,12 @@ CrossHair::CrossHair(GameObject* parent):
 
 void CrossHair::Initialize()
 {
-	crosshairImage_ = Image::Load("2-2024-3-24.png");
+	crosshairImage_ = Image::Load("crossHair.png");
 	assert(crosshairImage_ >= 0);
 }
 
 void CrossHair::Update()
 {
-	Direct3D::SetDepthBafferWriteEnable(false);
-
-
 }
 
 void CrossHair::Draw()

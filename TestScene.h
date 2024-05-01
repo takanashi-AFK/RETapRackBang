@@ -4,27 +4,11 @@
 #include <array>
 //テストシーンを管理するクラス
 
-const int PLACE_SIZE{ 4 };
-const int TARGET_NUM{ 3 };
-const float PLACE_OUTSET{ 3.f };
-const float PLACE_HEIGHT_OUTSET{ 5 };
-const float PLACE_DEPTH{ 35 };
-
 class TestScene : public GameObject
 {
 private:
-	std::array<SphereTarget*,3> pSp;
-	XMFLOAT3 targetPlace_[PLACE_SIZE][PLACE_SIZE];
-	XMFLOAT3 brokenTargetPos_;
-
 	int screenWidth;		//スクリーンの幅
 	int screenHeight;	//スクリーンの高さ
-
-	std::array<XMFLOAT3, 3> previousPos_;
-
-	int xPos_, yPos_;
-	int brokenTarget_;
-	bool isTargetBroken_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -41,12 +25,4 @@ public:
 
 	//開放
 	void Release() override;
-
-	void OnAction(XMFLOAT3 pos)override;
-
-	void GenerateSphereTarget();
-
-	void ReGenerateSphereTarget();
-
-	std::array<SphereTarget*, 3> GetSphereTarget() { return pSp; }
 };
