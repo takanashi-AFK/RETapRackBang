@@ -147,6 +147,7 @@
     </ClCompile>
     <ClCompile Include="Game\UI\CrossHair.cpp" />
     <ClCompile Include="Game\Stage\SkySphere.cpp" />
+    <ClCompile Include="Game\Target\TargetManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -261,6 +262,7 @@
     </ClInclude>
     <ClInclude Include="Game\UI\CrossHair.h" />
     <ClInclude Include="Game\Stage\SkySphere.h" />
+    <ClInclude Include="Game\Target\TargetManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

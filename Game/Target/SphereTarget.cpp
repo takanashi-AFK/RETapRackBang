@@ -1,7 +1,7 @@
 #include "SphereTarget.h"
 #include "../../Engine/Model.h"
 #include "../../Engine/ImGui/imgui.h"
-#include "../../TestScene.h"
+#include "TargetManager.h"
 SphereTarget::SphereTarget(GameObject* parent):
 	GameObject(parent,"SphereTarget"),
 	targetModelHandle_(-1)
@@ -28,14 +28,12 @@ void SphereTarget::Release()
 {
 }
 
-
-
 void SphereTarget::IsHit()
 {
-	TestScene* testScene = (TestScene*)FindObject("TestScene");
+	TargetManager* tm = (TargetManager*)FindObject("TargetManager");
 
 	KillMe();
 	XMFLOAT3 pos = transform_.position_;
-	testScene->OnAction(pos);
+	tm->OnAction(pos);
 }
 

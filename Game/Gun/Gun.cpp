@@ -5,7 +5,7 @@
 #include "../../Engine/Input.h"
 #include "../../Engine/ImGui/imgui.h"
 #include "../Player/Player.h"
-#include "../../TestScene.h"
+#include "../Target/TargetManager.h"
 
 Gun::Gun(GameObject* parent) :
 	GameObject(parent, "Gun"),
@@ -26,8 +26,8 @@ void Gun::Update()
 		XMFLOAT3 campos = Camera::GetPosition();
 
 		SphereTarget* spt = (SphereTarget*)FindObject("SphereTarget");
-		TestScene* tss = (TestScene*)FindObject("TestScene");
-		std::array<SphereTarget*, 3> targetList = tss->GetSphereTarget();
+		TargetManager* tm = (TargetManager*)FindObject("TargetManager");
+		std::array<SphereTarget*, 3> targetList = tm->GetSphereTarget();
 
 		Player* pp = (Player*)FindObject("Player");
 
