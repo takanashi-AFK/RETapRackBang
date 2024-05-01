@@ -2,7 +2,7 @@
 #include "Game/Stage/SimpleStage.h"
 #include "Game/Player/Player.h"
 #include "Game/UI/CrossHair.h"
-#include "SkySphere.h"
+#include "Game/Stage/SkySphere.h"
 
 //コンストラクタ
 TestScene::TestScene(GameObject* parent)
@@ -25,7 +25,6 @@ void TestScene::Initialize()
 	Instantiate<SkySphere>(this);
 	Instantiate<SimpleStage>(this);
 	Instantiate<Player>(this);
-	//Instantiate<SphereTarget>(this);
 	GenerateSphereTarget();
 	Instantiate<CrossHair>(this);
 }

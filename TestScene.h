@@ -10,7 +10,6 @@ const float PLACE_OUTSET{ 3.f };
 const float PLACE_HEIGHT_OUTSET{ 5 };
 const float PLACE_DEPTH{ 35 };
 
-
 class TestScene : public GameObject
 {
 private:

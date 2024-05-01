@@ -1,8 +1,8 @@
 #pragma once
-#include "Engine/GameObject.h"
-#include "Engine/Model.h"
-#include "Engine/SceneManager.h"
-#include "Engine/ImGui/imgui.h"
+#include "../../Engine/GameObject.h"
+#include "../../Engine/Model.h"
+#include "../../Engine/SceneManager.h"
+#include "../../Engine/ImGui/imgui.h"
 class SkySphere :
     public GameObject
 {

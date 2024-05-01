@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Engine/GameObject.h"
 #include "../../Engine/Image.h"
+#include "../../Engine/Direct3D.h"
 //テストシーンを管理するクラス
 class CrossHair : public GameObject
 {
