@@ -1,10 +1,10 @@
 #pragma once
-#include "Engine/GameObject.h"
-#include "Game/Target/SphereTarget.h"
+#include "../../Engine/GameObject.h"
+#include "../../Game/Target/SphereTarget.h"
 #include <array>
 //テストシーンを管理するクラス
 
-class TestScene : public GameObject
+class PlayScene : public GameObject
 {
 private:
 	int screenWidth;		//スクリーンの幅
@@ -12,7 +12,7 @@ private:
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	TestScene(GameObject* parent);
+	PlayScene(GameObject* parent);
 
 	//初期化
 	void Initialize() override;

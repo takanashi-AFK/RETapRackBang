@@ -162,7 +162,12 @@
     <ClCompile Include="Game\Target\SphereTarget.cpp" />
     <ClCompile Include="Game\Stage\SkySphere.cpp" />
     <ClCompile Include="Game\Target\TargetManager.cpp" />
-    <ClCompile Include="TestScene.cpp" />
+    <ClCompile Include="Game\Scene\MenuScene.cpp" />
+    <ClCompile Include="Game\Scene\ResultScene.cpp" />
+    <ClCompile Include="Game\Scene\SplashScene.cpp" />
+    <ClCompile Include="Game\Scene\PlayScene.cpp" />
+    <ClCompile Include="Engine\Transition.cpp" />
+    <ClCompile Include="Game\Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\UI\CrossHair.h" />
@@ -205,7 +210,12 @@
     <ClInclude Include="Game\Target\SphereTarget.h" />
     <ClInclude Include="Game\Stage\SkySphere.h" />
     <ClInclude Include="Game\Target\TargetManager.h" />
-    <ClInclude Include="TestScene.h" />
+    <ClInclude Include="Game\Scene\MenuScene.h" />
+    <ClInclude Include="Game\Scene\ResultScene.h" />
+    <ClInclude Include="Game\Scene\SplashScene.h" />
+    <ClInclude Include="Game\Scene\PlayScene.h" />
+    <ClInclude Include="Engine\Transition.h" />
+    <ClInclude Include="Game\Scene\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">

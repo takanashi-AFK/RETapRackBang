@@ -9,7 +9,7 @@ CrossHair::CrossHair(GameObject* parent):
 
 void CrossHair::Initialize()
 {
-	crosshairImage_ = Image::Load("crossHair.png");
+	crosshairImage_ = Image::Load("UI/crossHair.png");
 	assert(crosshairImage_ >= 0);
 }
 

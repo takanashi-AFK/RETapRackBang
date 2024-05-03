@@ -11,7 +11,7 @@
 #include <time.h>
 
 #include "global.h"
-//#include "../Transition.h"
+#include "Transition.h"
 #include "RootObject.h"
 #include "Model.h"
 #include "Image.h"
@@ -75,7 +75,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	ImGui_ImplDX11_Init(Direct3D::pDevice_, Direct3D::pContext_);
 	//カメラを準備
 	Camera::Initialize();
-
+	
+	Transition::Initialize();
 	//入力処理（キーボード、マウス、コントローラー）の準備
 	Input::Initialize(hWnd);
 
@@ -169,6 +170,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				//全オブジェクトの更新処理
 				//ルートオブジェクトのUpdateを呼んだあと、自動的に子、孫のUpdateが呼ばれる
 				pRootObject->UpdateSub();
+
+				//トランジションの更新処理
+				Transition::Update();
+
 				//Transition::Update();
 				//全オブジェクトを描画
 				//ルートオブジェクトのDrawを呼んだあと、自動的に子、孫のUpdateが呼ばれる
@@ -176,7 +181,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				//エフェクトの描画
 				VFX::Draw();
 
-				//Transition::Draw();
+
+				Transition::Draw();
 
 
 				ImGui::End();//ImGuiの処理を終了
@@ -205,7 +211,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	Audio::AllRelease();
 	Model::AllRelease();
 	Image::AllRelease();
-	//Transition::Release();
+	Transition::Release();
 	pRootObject->ReleaseSub();
 	SAFE_DELETE(pRootObject);
 	Direct3D::Release();
