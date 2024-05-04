@@ -6,6 +6,7 @@
 #include "../../Engine/ImGui/imgui.h"
 #include "../Player/Player.h"
 #include "../Target/TargetManager.h"
+#include "../../GlobalValiable.h"
 
 Gun::Gun(GameObject* parent) :
 	GameObject(parent, "Gun"),

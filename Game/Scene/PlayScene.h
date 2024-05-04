@@ -3,6 +3,7 @@
 #include "../../Game/Target/SphereTarget.h"
 #include <array>
 //テストシーンを管理するクラス
+class Timer;
 
 class PlayScene : public GameObject
 {

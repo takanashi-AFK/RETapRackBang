@@ -2,6 +2,7 @@
 #include "../../Engine/GameObject.h"
 #include "../../Engine/Image.h"
 class Player;
+class Timer;
 class CountDown : public GameObject
 {
 private:
@@ -14,6 +15,8 @@ private:
 	};
 	STATE state;
 	int countImage_[4];
+	int frame;
+	Timer* pTimer;
 
 	Player* pPlayer;
 public:

@@ -1,9 +1,10 @@
 #include "CountDown.h"
 #include "../Player/Player.h"
-
+#include "../UI/Timer.h"
 CountDown::CountDown(GameObject* parent) :
 	GameObject(parent, "CountDown"),
-	state{}
+	state(THREE),
+	frame(0)
 {
 }
 
@@ -13,13 +14,16 @@ void CountDown::Initialize()
 		countImage_[i] = Image::Load("Scene/PlayImage/" + std::to_string(i + 1) + ".png");
 		assert(countImage_[i] >= 0);
 	}
+	pTimer = Instantiate<Timer>(this);
+	pTimer->SetTime(20);
 	pPlayer = (Player*)FindObject("Player");
 	pPlayer->SetCanMove(false);
+
 }
 
 void CountDown::Update()
 {
-	static int frame;
+	
 
 	if (frame < 60)
 		state = THREE;
@@ -57,7 +61,7 @@ void CountDown::Draw()
 		Image::SetTransform(countImage_[3], transform_);
 		Image::Draw(countImage_[3]);
 		pPlayer->SetCanMove(true);
-
+		pTimer->Start();
 		break;
 	}
 

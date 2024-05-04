@@ -16,7 +16,7 @@ TitleScene::TitleScene(GameObject* parent):
 void TitleScene::Initialize()
 {
 	//画像データのロード
-	titleImageHandle_ = Image::Load("Scene/TitleImage/Title.png");
+	titleImageHandle_ = Image::Load("Scene/TitleImage/TitleImage.png");
 	assert(titleImageHandle_ >= 0);
 
 	pressSpaceImageHandle_ = Image::Load("Scene/TitleImage/PressSpaceKey.png");
@@ -29,7 +29,7 @@ void TitleScene::Update()
 {
 	if (Input::IsKeyDown(DIK_SPACE)) {
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_MENU, TID_BLACKOUT, 0.5f);
+		pSceneManager->ChangeScene(SCENE_ID_PLAY, TID_BLACKOUT, 0.5f);
 	}
 	
 	if (incleasing_) {

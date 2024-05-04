@@ -1,19 +1,23 @@
 #pragma once
 #include "../../Engine/GameObject.h"
-#include "../../Engine/SceneManager.h"
-#include "../../Engine/Input.h"
 #include "../../Engine/Text.h"
-#include "../../GlobalValiable.h"
+#include "../../Engine/Image.h"
 
-class ResultScene : public GameObject
+class Timer : public GameObject
 {
 private:
-	int resultImageHandle_;
-	Text* score_;
+	int countTime_;
+	int currentTime_;
+
+	bool isCount_;
+	bool isTimerEnd_;
+
+	Text* time_;
+	int BaseImage_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	ResultScene(GameObject* parent);
+	Timer(GameObject* parent);
 
 	//初期化
 	void Initialize() override;
@@ -26,4 +30,14 @@ public:
 
 	//開放
 	void Release() override;
+
+	void Start();
+
+	void Stop();
+
+	bool GetTimerEnd();
+
+	void SetTime(int _time);
+
+
 };

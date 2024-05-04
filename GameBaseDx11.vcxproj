@@ -169,6 +169,9 @@
     <ClCompile Include="Game\Scene\PlayScene.cpp" />
     <ClCompile Include="Engine\Transition.cpp" />
     <ClCompile Include="Game\Scene\TitleScene.cpp" />
+    <ClCompile Include="Game\UI\Timer.cpp" />
+    <ClCompile Include="Game\UI\PlayUI.cpp" />
+    <ClCompile Include="GlobalValiable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\UI\CountDown.h" />
@@ -218,6 +221,9 @@
     <ClInclude Include="Game\Scene\PlayScene.h" />
     <ClInclude Include="Engine\Transition.h" />
     <ClInclude Include="Game\Scene\TitleScene.h" />
+    <ClInclude Include="Game\UI\Timer.h" />
+    <ClInclude Include="Game\UI\PlayUI.h" />
+    <ClInclude Include="GlobalValiable.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">

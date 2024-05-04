@@ -106,9 +106,9 @@ namespace Image
 		}
 
 		//Žg‚Á‚Ä‚È‚¯‚ê‚Îƒ‚ƒfƒ‹‰ð•ú
-		if (isExist == false)
+  		if (isExist == false)
 		{
-			SAFE_DELETE(_datas[handle]->pSprite);
+ 			SAFE_DELETE(_datas[handle]->pSprite);
 		}
 
 		SAFE_DELETE(_datas[handle]);
@@ -119,7 +119,7 @@ namespace Image
 	//‘S‚Ä‚Ì‰æ‘œ‚ð‰ð•ú
 	void AllRelease()
 	{
-		for (int i = 0; i < _datas.size(); i++)
+		for (int i = 0; i <= _datas.size(); i++)
 		{
 			Release(i);
 		}

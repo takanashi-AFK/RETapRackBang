@@ -10,7 +10,7 @@ MenuScene::MenuScene(GameObject* parent):
 void MenuScene::Initialize()
 {
 	//画像データのロード
-	menuImageHandle_ = Image::Load("Scene/MenuImage/Menu.png");
+	menuImageHandle_ = Image::Load("Scene/MenuImage/MenuImage.png");
 	assert(menuImageHandle_ >= 0);
 
 }

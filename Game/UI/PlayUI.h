@@ -1,19 +1,21 @@
 #pragma once
 #include "../../Engine/GameObject.h"
-#include "../../Engine/SceneManager.h"
-#include "../../Engine/Input.h"
 #include "../../Engine/Text.h"
+#include "../../Engine/Image.h"
 #include "../../GlobalValiable.h"
 
-class ResultScene : public GameObject
+class PlayUI : public GameObject
 {
 private:
-	int resultImageHandle_;
+	//Text* time_;
 	Text* score_;
+	int BaseImage_;
+
+
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	ResultScene(GameObject* parent);
+	PlayUI(GameObject* parent);
 
 	//初期化
 	void Initialize() override;

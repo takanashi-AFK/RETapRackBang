@@ -2,6 +2,8 @@
 #include "../../Engine/Model.h"
 #include "../../Engine/ImGui/imgui.h"
 #include "TargetManager.h"
+#include "../../GlobalValiable.h"
+
 SphereTarget::SphereTarget(GameObject* parent):
 	GameObject(parent,"SphereTarget"),
 	targetModelHandle_(-1)
@@ -35,5 +37,6 @@ void SphereTarget::IsHit()
 	KillMe();
 	XMFLOAT3 pos = transform_.position_;
 	tm->OnAction(pos);
+	g_Score++;
 }
 
