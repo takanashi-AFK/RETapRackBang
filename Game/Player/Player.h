@@ -1,21 +1,14 @@
 #pragma once
 #include "../../Engine/GameObject.h"
-
+class Gun;
 //テストシーンを管理するクラス
 class Player : public GameObject
 {
 private:
 	XMVECTOR playerVec_;
 	int pModelHandle_;
-
-	const float speed = 0.5f;
-	const int camYOutset = 4;
-	const float camZOutset = 0.5f;
-	const float camXOutset = 90.f;
-	const float camAngleOutset = -30.f;
-	const float upperlimit = -30.f;
-	const float lowerlimit = 50.f;
-	const float distance = 10.f;
+	bool canMove_;
+	Gun* pGun;
 
 	//カメラ関連
 	const float sensitivity = 0.05f;
@@ -44,6 +37,8 @@ public:
 	void PlayerMove();
 
 	void TPSCam();
+
+	void SetCanMove(bool _canMove);
 
 	XMVECTOR GetPlayerVector() { return playerVec_; }
 };

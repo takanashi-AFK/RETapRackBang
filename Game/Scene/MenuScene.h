@@ -1,6 +1,8 @@
 #pragma once
 #include "../../Engine/GameObject.h"
 #include "../../Engine/Image.h"
+#include "../../Engine/SceneManager.h"
+#include "../../Engine/Input.h"
 class MenuScene : public GameObject
 {
 private:

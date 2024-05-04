@@ -79,7 +79,7 @@ void TargetManager::GenerateTarget()
 void TargetManager::ReGenerateTarget()
 {
 	
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < TARGET_NUM; i++)
 		if (brokenTargetPos_.x == previousPos_[i].x && brokenTargetPos_.y == previousPos_[i].y)
 			brokenTarget_ = i;
 

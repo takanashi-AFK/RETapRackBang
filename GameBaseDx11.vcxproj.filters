@@ -42,6 +42,15 @@
     <Filter Include="01Engine\Json">
       <UniqueIdentifier>{4bbcf85f-a1da-45ca-a7cb-1639fd1162ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\UI">
+      <UniqueIdentifier>{4ed75ac9-5ea2-4cbb-a779-2ca6bae0ef80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scene">
+      <UniqueIdentifier>{5af078ba-7d79-4bdf-b095-952c9889c2af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Target">
+      <UniqueIdentifier>{f132ed0b-7d19-498b-a87a-f1e83e0106a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -98,7 +107,6 @@
     <ClCompile Include="Engine\Transform.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Engine\Audio.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
@@ -141,13 +149,40 @@
     <ClCompile Include="Game\Stage\SimpleStage.cpp">
       <Filter>Game\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Target\SphereTarget.cpp" />
     <ClCompile Include="Engine\Json\JsonReader.cpp">
       <Filter>01Engine\Json</Filter>
     </ClCompile>
-    <ClCompile Include="Game\UI\CrossHair.cpp" />
-    <ClCompile Include="Game\Stage\SkySphere.cpp" />
-    <ClCompile Include="Game\Target\TargetManager.cpp" />
+    <ClCompile Include="Game\UI\CrossHair.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\MenuScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\PlayScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\ResultScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\SplashScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\TitleScene.cpp">
+      <Filter>Game\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Stage\SkySphere.cpp">
+      <Filter>Game\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Target\SphereTarget.cpp">
+      <Filter>Game\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Target\TargetManager.cpp">
+      <Filter>Game\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Transition.cpp">
+      <Filter>01Engine\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\CountDown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -204,7 +239,6 @@
     <ClInclude Include="Engine\Transform.h">
       <Filter>01Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="TestScene.h" />
     <ClInclude Include="Engine\Audio.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
@@ -253,16 +287,43 @@
     <ClInclude Include="Game\Stage\SimpleStage.h">
       <Filter>Game\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Target\SphereTarget.h" />
     <ClInclude Include="Engine\Json\json.hpp">
       <Filter>01Engine\Json</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Json\JsonReader.h">
       <Filter>01Engine\Json</Filter>
     </ClInclude>
-    <ClInclude Include="Game\UI\CrossHair.h" />
-    <ClInclude Include="Game\Stage\SkySphere.h" />
-    <ClInclude Include="Game\Target\TargetManager.h" />
+    <ClInclude Include="Game\UI\CrossHair.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\MenuScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\PlayScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\ResultScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\SplashScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\TitleScene.h">
+      <Filter>Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Stage\SkySphere.h">
+      <Filter>Game\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Target\SphereTarget.h">
+      <Filter>Game\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Target\TargetManager.h">
+      <Filter>Game\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Transition.h">
+      <Filter>01Engine\ResourceManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UI\CountDown.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

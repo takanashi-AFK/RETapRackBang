@@ -4,6 +4,7 @@ class Gun : public GameObject
 {
 private:
 	int gunModelHandle_;
+	bool canShot_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -20,4 +21,6 @@ public:
 
 	//開放
 	void Release() override;
+
+	void SetCanShot(bool _canShot);
 };

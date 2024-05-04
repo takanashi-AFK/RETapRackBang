@@ -1,23 +1,25 @@
 #pragma once
 #include "../../Engine/GameObject.h"
 #include "../../Engine/Image.h"
-#include "../../Engine/ImGui/imgui.h"
-#include "../../Engine/Input.h"
-#include "../../Engine/SceneManager.h"
-
-class TitleScene : public GameObject
+class Player;
+class CountDown : public GameObject
 {
 private:
-	int titleImageHandle_;
-	int pressSpaceImageHandle_;
+	enum STATE {
+		ONE= 1,
+		TWO,
+		THREE,
+		START,
+		END
+	};
+	STATE state;
+	int countImage_[4];
 
-	bool incleasing_;
-	int opacity_;
-	Transform spaceKeyTrans_;
+	Player* pPlayer;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	TitleScene(GameObject* parent);
+	CountDown(GameObject* parent);
 
 	//初期化
 	void Initialize() override;
@@ -30,4 +32,6 @@ public:
 
 	//開放
 	void Release() override;
+
+	STATE GetCurrentState();
 };

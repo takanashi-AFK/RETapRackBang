@@ -15,11 +15,11 @@ const float PLACE_DEPTH{ 35 };
 class TargetManager : public GameObject
 {
 private:
-	std::array<SphereTarget*, 3> pSp;
+	std::array<SphereTarget*, TARGET_NUM> pSp;
 	XMFLOAT3 targetPlace_[PLACE_SIZE][PLACE_SIZE];
 	XMFLOAT3 brokenTargetPos_;
 	int xPos_, yPos_;
-	std::array<XMFLOAT3, 3> previousPos_;
+	std::array<XMFLOAT3, TARGET_NUM> previousPos_;
 
 	int brokenTarget_;
 	bool isTargetBroken_;

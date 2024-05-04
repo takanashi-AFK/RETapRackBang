@@ -1,6 +1,8 @@
 #include "SplashScene.h"
 
-SplashScene::SplashScene(GameObject* parent)
+SplashScene::SplashScene(GameObject* parent):
+	GameObject(parent, "SplashScene"),
+	splashImageHandle_(-1)
 {
 }
 

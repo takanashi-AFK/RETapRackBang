@@ -1,6 +1,9 @@
 #include "MenuScene.h"
 
-MenuScene::MenuScene(GameObject* parent)
+
+MenuScene::MenuScene(GameObject* parent):
+	GameObject(parent, "MenuScene"),
+	menuImageHandle_(-1)
 {
 }
 
@@ -14,6 +17,11 @@ void MenuScene::Initialize()
 
 void MenuScene::Update()
 {
+	if (Input::IsKeyDown(DIK_SPACE)) {
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_PLAY, TID_BLACKOUT, 0.5f);
+	}
+
 }
 
 void MenuScene::Draw()

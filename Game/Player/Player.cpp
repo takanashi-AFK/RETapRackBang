@@ -5,12 +5,23 @@
 #include "../../Engine/Model.h"
 #include "../Gun/Gun.h"
 
+namespace {
+	const float speed = 0.5f;
+	const int camYOutset = 4;
+	const float camZOutset = 0.5f;
+	const float camXOutset = 90.f;
+	const float camAngleOutset = -30.f;
+	const float upperlimit = -30.f;
+	const float lowerlimit = 50.f;
+	const float distance = 10.f;
+}
 Player::Player(GameObject* parent) :
 	GameObject(parent, "Player"),
 	newCenter_{},
 	pModelHandle_(-1),
 	playerVec_{},
-	rotateAngle_{}
+	rotateAngle_{},
+	canMove_(true)
 {
 }
 
@@ -18,13 +29,17 @@ void Player::Initialize()
 {
 	pModelHandle_ = Model::Load("Player/TestBird.fbx");
 	assert(pModelHandle_ >= 0);
-	Instantiate<Gun>(this);
+	pGun = Instantiate<Gun>(this);
 }
 
 void Player::Update()
 {
 	PlayerMove();
 	TPSCam();
+	if (canMove_)
+		pGun->SetCanShot(true);
+	else
+		pGun->SetCanShot(false);
 }
 
 void Player::Draw()
@@ -39,6 +54,7 @@ void Player::Release()
 
 void Player::PlayerMove()
 {
+	if (canMove_) {
 	XMVECTOR dir{};
 	XMVECTOR sightLine = Camera::GetSightLine();
 	sightLine = XMVectorSetY(sightLine, 0);
@@ -71,6 +87,7 @@ void Player::PlayerMove()
 
 	//プレイヤーの位置に対して、上で作った移動ベクトルを足す
 	XMStoreFloat3(&transform_.position_, XMLoadFloat3(&transform_.position_) + move);
+	}
 }
 
 void Player::TPSCam()
@@ -149,5 +166,10 @@ void Player::TPSCam()
 
 	Camera::SetTarget(camTarget);
 	Camera::SetPosition(camPosition);
+}
+
+void Player::SetCanMove(bool _canMove)
+{
+	canMove_ = _canMove;
 }
 

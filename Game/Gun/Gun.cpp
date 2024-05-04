@@ -9,7 +9,8 @@
 
 Gun::Gun(GameObject* parent) :
 	GameObject(parent, "Gun"),
-	gunModelHandle_(-1)
+	gunModelHandle_(-1),
+	canShot_(true)
 {
 }
 
@@ -21,7 +22,7 @@ void Gun::Initialize()
 
 void Gun::Update()
 {
-	if (Input::IsMouseButtonDown(0)) {
+	if (Input::IsMouseButtonDown(0) && canShot_) {
 		XMVECTOR sightLine = Camera::GetSightLine();
 		XMFLOAT3 campos = Camera::GetPosition();
 
@@ -36,9 +37,7 @@ void Gun::Update()
 		
 		if (spt != nullptr) {
 			for (auto target : targetList) {
-				ImGui::Text("%d", target->GetModelHandle());
 				XMStoreFloat3(&pPos, XMVector3Normalize(pp->GetPlayerVector()));
-				//bullet.start = { pPos.x + campos.x,pPos.y + campos.y, pPos.z + campos.z };
 				bullet.start = campos;
 				XMStoreFloat3(&bullet.dir, sightLine);
 				Model::RayCast(target->GetModelHandle(), &bullet);
@@ -47,15 +46,8 @@ void Gun::Update()
 					target->IsHit();
 				}
 			}
-			
-
-			//vectorを取得
-			//そのリストすべてに対してレイを撃つ
-			//当たったらそのターゲットを破壊
 		}
 		
-
-		auto i = 0;
 	}
 
 	
@@ -69,4 +61,9 @@ void Gun::Draw()
 
 void Gun::Release()
 {
+}
+
+void Gun::SetCanShot(bool _canShot)
+{
+	canShot_ = _canShot;
 }

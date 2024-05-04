@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\UI\CountDown.cpp" />
     <ClCompile Include="Game\UI\CrossHair.cpp" />
     <ClCompile Include="Engine\ImGui\imgui.cpp" />
     <ClCompile Include="Engine\ImGui\imgui_draw.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="Game\Scene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\UI\CountDown.h" />
     <ClInclude Include="Game\UI\CrossHair.h" />
     <ClInclude Include="Engine\ImGui\imconfig.h" />
     <ClInclude Include="Engine\ImGui\imgui.h" />
