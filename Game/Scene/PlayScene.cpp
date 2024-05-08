@@ -8,7 +8,9 @@
 
 //コンストラクタ
 PlayScene::PlayScene(GameObject* parent)
-	: GameObject(parent, "PlayScene")
+	: GameObject(parent, "PlayScene"),
+	screenHeight{},
+	screenWidth{}
 {
 }
 

@@ -21,7 +21,8 @@ Player::Player(GameObject* parent) :
 	pModelHandle_(-1),
 	playerVec_{},
 	rotateAngle_{},
-	canMove_(true)
+	canMove_(true),
+	pGun(nullptr)
 {
 }
 
