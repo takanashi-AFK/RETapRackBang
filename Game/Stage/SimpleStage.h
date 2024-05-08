@@ -23,5 +23,6 @@ public:
 	//開放
 	void Release() override;
 
+	//モデルハンドルの取得
 	int GetModelHandle() { return stageModelHandle_; }
 };

@@ -36,9 +36,20 @@ public:
 	/// </summary>
 	void PlayerMove();
 
+	/// <summary>
+	/// TPSカメラ
+	/// </summary>
 	void TPSCam();
 
+	/// <summary>
+	/// プレイヤーが移動可能かどうかを設定
+	/// </summary>
+	/// <param name="_canMove">移動可能 = true</param>
 	void SetCanMove(bool _canMove);
 
+	/// <summary>
+	/// プレイヤーの向いている方向を取得
+	/// </summary>
+	/// <returns>プレイヤーの正面</returns>
 	XMVECTOR GetPlayerVector() { return playerVec_; }
 };

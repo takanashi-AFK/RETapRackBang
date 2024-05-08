@@ -56,6 +56,10 @@ public:
 	/// </summary>
 	void ReGenerateTarget();
 
+	/// <summary>
+	/// 現在ゲームに出現しているターゲットのリストを取得
+	/// </summary>
+	/// <returns>すべてのターゲット</returns>
 	std::array<SphereTarget*, 3> GetSphereTarget() { return pSp; }
 
 };

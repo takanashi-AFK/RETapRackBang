@@ -17,6 +17,7 @@ void MenuScene::Initialize()
 
 void MenuScene::Update()
 {
+	//スペースキーが押されたら
 	if (Input::IsKeyDown(DIK_SPACE)) {
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_PLAY, TID_BLACKOUT, 0.5f);

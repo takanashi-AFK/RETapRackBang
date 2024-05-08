@@ -28,8 +28,10 @@ public:
 	//衝突したら
 	void IsHit();
 
+	//モデルハンドルの取得
 	int GetModelHandle() {return targetModelHandle_; }
 
+	//弾が当たった時のエフェクトの設定
 	void InitBulletHitEff();
 };
 

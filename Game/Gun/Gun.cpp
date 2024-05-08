@@ -1,12 +1,17 @@
 #include "Gun.h"
-#include "../Target/SphereTarget.h"
+//エンジンinclude
 #include "../../Engine/Model.h"
 #include "../../Engine/Camera.h"
 #include "../../Engine/Input.h"
 #include "../../Engine/ImGui/imgui.h"
+
+//自作クラスinclude
 #include "../Player/Player.h"
 #include "../Target/TargetManager.h"
+#include "../Target/SphereTarget.h"
 #include "../../GlobalValiable.h"
+#include"../Manager/SoundManager.h"
+
 Gun::Gun(GameObject* parent) :
 	GameObject(parent, "Gun"),
 	gunModelHandle_(-1),
@@ -16,40 +21,54 @@ Gun::Gun(GameObject* parent) :
 
 void Gun::Initialize()
 {
+	//銃のモデルを読み込む
 	gunModelHandle_ = Model::Load("Player/blasterM.fbx");
 	assert(gunModelHandle_ >= 0);
-	ShotEffect();
 }
 
 void Gun::Update()
 {
-	shotEffect_.position = { transform_.position_.x + 2, transform_.position_.y + 2, transform_.position_.z };
-
+	//もしマウスの左ボタンが押されたら
 	if (Input::IsMouseButtonDown(0) && canShot_) {
+		//射撃音を再生
 		SoundManager::PlayShotSound();
+
+		//FIXME: エフェクトを再生(現時点だと位置のずれが発生)
+		shotEffect_.position = { transform_.position_.x + 2, transform_.position_.y + 2, transform_.position_.z };
 		ShotEffect();
 		VFX::Start(shotEffect_);
 		
+		//視線ベクトルを取得
 		XMVECTOR sightLine = Camera::GetSightLine();
+		//カメラの位置を取得
 		XMFLOAT3 campos = Camera::GetPosition();
 
+		//インスタンス用意
 		SphereTarget* spt = (SphereTarget*)FindObject("SphereTarget");
 		TargetManager* tm = (TargetManager*)FindObject("TargetManager");
+		Player* pp = (Player*)FindObject("Player");
+
 		std::array<SphereTarget*, 3> targetList = tm->GetSphereTarget();
 
-		Player* pp = (Player*)FindObject("Player");
 
 		XMFLOAT3 pPos;
 		RayCastData bullet;
 		
+		//ターゲットが存在していたら
 		if (spt != nullptr) {
+			//ターゲットに向けてレイキャスト
 			for (auto target : targetList) {
 				XMStoreFloat3(&pPos, XMVector3Normalize(pp->GetPlayerVector()));
+				//弾の始点をカメラの位置に設定
 				bullet.start = campos;
+				//弾の方向を視線ベクトルに設定
 				XMStoreFloat3(&bullet.dir, sightLine);
+				//ターゲットのモデル向けてレイキャストを発射
 				Model::RayCast(target->GetModelHandle(), &bullet);
+				//もし当たったら
 				if (bullet.hit)
 				{
+					//ターゲットにヒットしたことを伝える
 					target->IsHit();
 				}
 			}

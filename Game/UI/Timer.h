@@ -31,12 +31,22 @@ public:
 	//開放
 	void Release() override;
 
+	//タイマーの開始
 	void Start();
 
+	//タイマーの停止
 	void Stop();
 
+	/// <summary>
+	/// タイマーが終了したかどうか
+	/// </summary>
+	/// <returns>タイマーが終了 = true</returns>
 	bool GetTimerEnd();
 
+	/// <summary>
+	/// 何秒間のタイマーかを設定
+	/// </summary>
+	/// <param name="_time">何秒カウントするか(秒)</param>
 	void SetTime(int _time);
 
 

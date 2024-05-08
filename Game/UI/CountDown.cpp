@@ -77,9 +77,5 @@ void CountDown::Release()
 {
 }
 
-CountDown::STATE CountDown::GetCurrentState()
-{
-	 return state; 
-}
 
 

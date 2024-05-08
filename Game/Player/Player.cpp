@@ -28,14 +28,16 @@ Player::Player(GameObject* parent) :
 
 void Player::Initialize()
 {
+	//プレイヤーのモデルを読み込む
 	pModelHandle_ = Model::Load("Player/TestBird.fbx");
 	assert(pModelHandle_ >= 0);
+
+	//銃のインスタンスを生成
 	pGun = Instantiate<Gun>(this);
 }
 
 void Player::Update()
 {
-
 	PlayerMove();
 	TPSCam();
 }
@@ -54,7 +56,9 @@ void Player::PlayerMove()
 {
 	if (canMove_) {
 	XMVECTOR dir{};
+	//視線ベクトルを取得
 	XMVECTOR sightLine = Camera::GetSightLine();
+	//視線ベクトルのY軸の値を0にし、正規化
 	sightLine = XMVectorSetY(sightLine, 0);
 	sightLine = XMVector3Normalize(sightLine);
 	float rotationAngle = 0.0f;
@@ -94,16 +98,16 @@ void Player::TPSCam()
 	rotateAngle_.x += Input::GetMouseMove().x * sensitivity;
 	rotateAngle_.y += Input::GetMouseMove().y * sensitivity;
 
+	//カメラの中心点をプレイヤーの位置に仮設定
 	XMFLOAT3 center = transform_.position_;
+	//カメラの中心点を少し上にずらす
 	center.y = center.y + camYOutset;
 
 	XMFLOAT3 camTarget{};
 	XMFLOAT3 camPosition{};
 
-
+	//Y軸の回転角度を制限
 	if (rotateAngle_.y < upperlimit)rotateAngle_.y -= Input::GetMouseMove().y * sensitivity;
-
-
 	if (rotateAngle_.y > lowerlimit)rotateAngle_.y -= Input::GetMouseMove().y * sensitivity;
 
 	/*Y軸回転*/ {
@@ -112,6 +116,7 @@ void Player::TPSCam()
 		XMVECTOR playerToCamTarget{ 0.f,0.f,1.f,0.f };
 		//Y軸で回る回転行列を作成、playerToCamTargetを回転させる
 		XMMATRIX rotY = XMMatrixRotationY(XMConvertToRadians(rotateAngle_.x));
+		//プレイヤーからカメラのターゲットに向かうベクトルを生成
 		playerToCamTarget = XMVector3Transform(playerToCamTarget, rotY);
 		playerToCamTarget *= distance;
 
@@ -125,6 +130,7 @@ void Player::TPSCam()
 		XMVECTOR playerToCamPosition = -playerToCamTarget;
 		playerToCamPosition = XMVector3Transform(playerToCamPosition, XMMatrixRotationY(XMConvertToRadians(camAngleOutset)));
 
+		//原点からカメラのポジションに向かうベクトルを生成
 		XMVECTOR originToCamPosition = originToPlayer + playerToCamPosition;
 
 		//カメラのターゲットを作成
@@ -159,6 +165,7 @@ void Player::TPSCam()
 		XMStoreFloat3(&camPosition, originToCamPosition);
 	}
 
+	//カメラの視線とプレイヤーモデルの向きを合わせる
 	transform_.rotate_.x = rotateAngle_.y;
 	transform_.rotate_.y = rotateAngle_.x;
 
