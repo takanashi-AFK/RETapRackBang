@@ -1,11 +1,13 @@
 #pragma once
 #include"../../Engine/GameObject.h"
 #include"../../Engine/SphereCollider.h"
+#include "../../Engine/VFX.h"
 
 class SphereTarget:public GameObject
 {
 private:
 	int targetModelHandle_;
+	EmitterData bulletHit_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -27,5 +29,7 @@ public:
 	void IsHit();
 
 	int GetModelHandle() {return targetModelHandle_; }
+
+	void InitBulletHitEff();
 };
 

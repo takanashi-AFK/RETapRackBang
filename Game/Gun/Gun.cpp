@@ -19,11 +19,16 @@ void Gun::Initialize()
 {
 	gunModelHandle_ = Model::Load("Player/blasterM.fbx");
 	assert(gunModelHandle_ >= 0);
+	BulletHitEffect();
 }
 
 void Gun::Update()
 {
+
 	if (Input::IsMouseButtonDown(0) && canShot_) {
+
+
+		
 		XMVECTOR sightLine = Camera::GetSightLine();
 		XMFLOAT3 campos = Camera::GetPosition();
 
@@ -50,8 +55,6 @@ void Gun::Update()
 		}
 		
 	}
-
-	
 }
 
 void Gun::Draw()
@@ -67,4 +70,10 @@ void Gun::Release()
 void Gun::SetCanShot(bool _canShot)
 {
 	canShot_ = _canShot;
+}
+
+void Gun::BulletHitEffect()
+{
+
+
 }

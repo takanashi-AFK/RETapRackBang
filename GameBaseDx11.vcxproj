@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Game\UI\CountDown.cpp" />
     <ClCompile Include="Game\UI\CrossHair.cpp" />
     <ClCompile Include="Engine\ImGui\imgui.cpp" />
@@ -174,6 +175,7 @@
     <ClCompile Include="GlobalValiable.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Game\UI\CountDown.h" />
     <ClInclude Include="Game\UI\CrossHair.h" />
     <ClInclude Include="Engine\ImGui\imconfig.h" />

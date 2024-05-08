@@ -1,6 +1,5 @@
 #pragma once
 #include "../../Engine/GameObject.h"
-
 class Gun : public GameObject
 {
 private:
@@ -24,5 +23,7 @@ public:
 	void Release() override;
 
 	void SetCanShot(bool _canShot);
+
+	void BulletHitEffect();
 
 };
