@@ -1,12 +1,14 @@
 #pragma once
 #include "../../Engine/GameObject.h"
 #include"../Manager/SoundManager.h"
+#include "../../Engine/VFX.h"
 
 class Gun : public GameObject
 {
 private:
 	int gunModelHandle_;
 	bool canShot_;
+	EmitterData shotEffect_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -26,6 +28,6 @@ public:
 
 	void SetCanShot(bool _canShot);
 
-	void BulletHitEffect();
+	void ShotEffect();
 
 };

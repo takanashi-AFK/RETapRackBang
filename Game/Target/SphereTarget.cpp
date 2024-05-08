@@ -47,7 +47,6 @@ void SphereTarget::IsHit()
 
 void SphereTarget::InitBulletHitEff()
 {
-	//‰Î‚Ì•²
 	bulletHit_.delay = 0;
 	bulletHit_.number = 20;
 	bulletHit_.lifeTime = 20;
