@@ -28,6 +28,7 @@ void TitleScene::Initialize()
 void TitleScene::Update()
 {
 	if (Input::IsKeyDown(DIK_SPACE)) {
+		SoundManager::PlayConfirmSound();
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_PLAY, TID_BLACKOUT, 0.5f);
 	}

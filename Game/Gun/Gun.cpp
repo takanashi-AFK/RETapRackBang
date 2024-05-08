@@ -7,7 +7,6 @@
 #include "../Player/Player.h"
 #include "../Target/TargetManager.h"
 #include "../../GlobalValiable.h"
-
 Gun::Gun(GameObject* parent) :
 	GameObject(parent, "Gun"),
 	gunModelHandle_(-1),
@@ -26,7 +25,7 @@ void Gun::Update()
 {
 
 	if (Input::IsMouseButtonDown(0) && canShot_) {
-
+		SoundManager::PlayShotSound();
 
 		
 		XMVECTOR sightLine = Camera::GetSightLine();

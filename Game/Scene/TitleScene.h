@@ -4,7 +4,7 @@
 #include "../../Engine/ImGui/imgui.h"
 #include "../../Engine/Input.h"
 #include "../../Engine/SceneManager.h"
-
+#include "../Manager/SoundManager.h"
 class TitleScene : public GameObject
 {
 private:

@@ -1,5 +1,7 @@
 #pragma once
 #include "../../Engine/GameObject.h"
+#include"../Manager/SoundManager.h"
+
 class Gun : public GameObject
 {
 private:

@@ -4,6 +4,7 @@
 #include "../../Engine/Input.h"
 #include "../../Engine/Text.h"
 #include "../../GlobalValiable.h"
+#include "../Manager/SoundManager.h"
 
 class ResultScene : public GameObject
 {
