@@ -157,7 +157,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				ImGui_ImplDX11_NewFrame();
 				ImGui_ImplWin32_NewFrame();
 				ImGui::NewFrame();
-
+#ifdef _DEBUG
 				ImGui::Begin("Hello, world!");//ImGuiの処理を開始
 				{
 					//この中にしたい処理を記述
@@ -166,6 +166,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 						PostQuitMessage(0);	//プログラム終了
 					}
 				}
+#endif // _DEBUG
+
+			
 
 				//全オブジェクトの更新処理
 				//ルートオブジェクトのUpdateを呼んだあと、自動的に子、孫のUpdateが呼ばれる
@@ -184,9 +187,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 				Transition::Draw();
 
+#ifdef _DEBUG
 
 				ImGui::End();//ImGuiの処理を終了
-
+#endif // _DEBUG
 				//ImGuiの描画処理
 				ImGui::Render();
 				ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

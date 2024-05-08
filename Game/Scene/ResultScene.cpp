@@ -2,7 +2,9 @@
 #include "../../Engine/Image.h"
 
 ResultScene::ResultScene(GameObject* parent):
-	GameObject(parent,"ResultScene")
+	GameObject(parent,"ResultScene"),
+	resultImageHandle_(-1),
+	score_(nullptr)
 {
 }
 
@@ -10,6 +12,7 @@ void ResultScene::Initialize()
 {
 	resultImageHandle_ = Image::Load("Scene/ResultImage/Result.png");
 	assert(resultImageHandle_ >= 0);
+
 
 	score_ = new Text;
 	score_->Initialize("number.png", 64, 68, 15);

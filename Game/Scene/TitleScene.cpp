@@ -9,7 +9,9 @@ namespace
 TitleScene::TitleScene(GameObject* parent):
 	GameObject(parent,"TitleScene"),
 	titleImageHandle_(-1),
-	pressSpaceImageHandle_(-1)
+	pressSpaceImageHandle_(-1),
+	opacity_(0),
+	incleasing_(true)
 {
 }
 
