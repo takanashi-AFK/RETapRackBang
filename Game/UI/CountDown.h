@@ -3,6 +3,8 @@
 #include "../../Engine/Image.h"
 class Player;
 class Timer;
+class Gun;
+
 class CountDown : public GameObject
 {
 private:
@@ -17,7 +19,7 @@ private:
 	int countImage_[4];
 	int frame;
 	Timer* pTimer;
-
+	Gun* pGun;
 	Player* pPlayer;
 public:
 	//コンストラクタ

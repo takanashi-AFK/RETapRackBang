@@ -34,12 +34,9 @@ void Player::Initialize()
 
 void Player::Update()
 {
+
 	PlayerMove();
 	TPSCam();
-	if (canMove_)
-		pGun->SetCanShot(true);
-	else
-		pGun->SetCanShot(false);
 }
 
 void Player::Draw()

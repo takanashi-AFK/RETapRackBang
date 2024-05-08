@@ -23,10 +23,12 @@ void Gun::Initialize()
 
 void Gun::Update()
 {
+	shotEffect_.position = { transform_.position_.x + 2, transform_.position_.y + 2, transform_.position_.z };
 
 	if (Input::IsMouseButtonDown(0) && canShot_) {
 		SoundManager::PlayShotSound();
 		ShotEffect();
+		VFX::Start(shotEffect_);
 		
 		XMVECTOR sightLine = Camera::GetSightLine();
 		XMFLOAT3 campos = Camera::GetPosition();
@@ -75,9 +77,7 @@ void Gun::ShotEffect()
 {
 	shotEffect_.delay = 0;
 	shotEffect_.number = 1;
-	shotEffect_.position = { transform_.position_.x+2, transform_.position_.y+2, transform_.position_.z };
 	shotEffect_.lifeTime = 3;
 	shotEffect_.size = XMFLOAT2(5,5);
 	shotEffect_.color = XMFLOAT4(1, 1, 0.1, 0.5);
-	VFX::Start(shotEffect_);
 }

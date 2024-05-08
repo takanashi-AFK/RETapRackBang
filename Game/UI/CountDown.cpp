@@ -1,6 +1,7 @@
 #include "CountDown.h"
 #include "../Player/Player.h"
 #include "../UI/Timer.h"
+#include "../Gun/Gun.h"
 CountDown::CountDown(GameObject* parent) :
 	GameObject(parent, "CountDown"),
 	state(THREE),
@@ -16,9 +17,12 @@ void CountDown::Initialize()
 	}
 	pTimer = Instantiate<Timer>(this);
 	pTimer->SetTime(20);
+
 	pPlayer = (Player*)FindObject("Player");
 	pPlayer->SetCanMove(false);
 
+	pGun = (Gun*)FindObject("Gun");
+	pGun->SetCanShot(false);
 }
 
 void CountDown::Update()
@@ -60,7 +64,8 @@ void CountDown::Draw()
 	case START:
 		Image::SetTransform(countImage_[3], transform_);
 		Image::Draw(countImage_[3]);
-		pPlayer->SetCanMove(true);
+		//pPlayer->SetCanMove(true);
+		pGun->SetCanShot(true);
 		pTimer->Start();
 		break;
 	}
