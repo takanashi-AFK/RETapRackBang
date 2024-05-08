@@ -27,8 +27,6 @@ void CountDown::Initialize()
 
 void CountDown::Update()
 {
-	
-
 	if (frame < 60)
 		state = THREE;
 	else if (frame > 61 && frame < 120)

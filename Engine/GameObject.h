@@ -117,6 +117,7 @@ public:
 	//引数：pTarget	衝突した相手
 	virtual void OnCollision(GameObject* pTarget) {};
 
+	//何かが起こった場合に呼ばれる（オーバーライド用）	
 	virtual void OnAction() {};
 	virtual void OnAction(XMFLOAT3 pos) {};
 

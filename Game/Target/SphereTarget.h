@@ -26,7 +26,7 @@ public:
 	void Release() override;
 
 	//Õ“Ë‚µ‚½‚ç
-	void IsHit();
+	void OnAction()override;
 
 	//ƒ‚ƒfƒ‹ƒnƒ“ƒhƒ‹‚Ìæ“¾
 	int GetModelHandle() {return targetModelHandle_; }

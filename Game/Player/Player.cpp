@@ -106,7 +106,7 @@ void Player::TPSCam()
 	XMFLOAT3 camTarget{};
 	XMFLOAT3 camPosition{};
 
-	//Y²‚Ì‰ñ“]Šp“x‚ğ§ŒÀ
+	//X²‚Ì‰ñ“]Šp“x‚ğ§ŒÀ
 	if (rotateAngle_.y < upperlimit)rotateAngle_.y -= Input::GetMouseMove().y * sensitivity;
 	if (rotateAngle_.y > lowerlimit)rotateAngle_.y -= Input::GetMouseMove().y * sensitivity;
 

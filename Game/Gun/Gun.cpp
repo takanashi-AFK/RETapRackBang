@@ -59,17 +59,20 @@ void Gun::Update()
 			//ターゲットに向けてレイキャスト
 			for (auto target : targetList) {
 				XMStoreFloat3(&pPos, XMVector3Normalize(pp->GetPlayerVector()));
+
 				//弾の始点をカメラの位置に設定
 				bullet.start = campos;
+
 				//弾の方向を視線ベクトルに設定
 				XMStoreFloat3(&bullet.dir, sightLine);
+
 				//ターゲットのモデル向けてレイキャストを発射
 				Model::RayCast(target->GetModelHandle(), &bullet);
+
 				//もし当たったら
-				if (bullet.hit)
-				{
+				if (bullet.hit){
 					//ターゲットにヒットしたことを伝える
-					target->IsHit();
+					target->OnAction();
 				}
 			}
 		}

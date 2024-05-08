@@ -32,7 +32,7 @@ void SphereTarget::Release()
 	bulletHit_.position = XMFLOAT3(transform_.position_);
 }
 
-void SphereTarget::IsHit()
+void SphereTarget::OnAction()
 {
 	TargetManager* tm = (TargetManager*)FindObject("TargetManager");
 
