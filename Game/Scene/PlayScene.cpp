@@ -41,18 +41,18 @@ void PlayScene::Update()
 	}
 
 	frame++;
-
-	if (Input::IsKeyDown(DIK_O)) {
-		isOption_ = !isOption_;
-	}
+if (Input::IsKeyDown(DIK_O)) {
+    isOption_ = !isOption_;
 
 	if (isOption_) {
-	opt = Instantiate<Option>(this);
+		opt = Instantiate<Option>(this);
 	}
 	else {
-		if(opt!=nullptr)
-		opt->KillMe();
+		if (opt != nullptr) {
+			opt->KillMe();
+		}
 	}
+}
 	
 	
 	//‘I‘ð‚³‚ê‚½—v‘f‚Ìupdate‚ð‰ñ‚¹‚é‚æ‚¤‚É‚µ‚½‚¢
