@@ -11,7 +11,6 @@ private:
 	Gun* pGun;
 
 	//ƒJƒƒ‰ŠÖ˜A
-	const float sensitivity = 0.05f;
 	XMFLOAT3 rotateAngle_;
 	XMFLOAT3 newCenter_;
 public:

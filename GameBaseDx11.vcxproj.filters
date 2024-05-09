@@ -193,6 +193,7 @@
     </ClCompile>
     <ClCompile Include="GlobalValiable.cpp" />
     <ClCompile Include="Game\Manager\SoundManager.cpp" />
+    <ClCompile Include="Game\UI\Option.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -344,6 +345,7 @@
     </ClInclude>
     <ClInclude Include="GlobalValiable.h" />
     <ClInclude Include="Game\Manager\SoundManager.h" />
+    <ClInclude Include="Game\UI\Option.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

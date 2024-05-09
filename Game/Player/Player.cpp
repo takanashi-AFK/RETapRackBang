@@ -4,6 +4,7 @@
 #include "../../Engine/Input.h"
 #include "../../Engine/Model.h"
 #include "../Gun/Gun.h"
+#include "../../Engine/ImGui/imgui.h"
 
 namespace {
 	const float speed = 0.5f;
@@ -14,6 +15,8 @@ namespace {
 	const float upperlimit = -30.f;
 	const float lowerlimit = 50.f;
 	const float distance = 10.f;
+	float sensitivity = 0.05f;
+
 }
 Player::Player(GameObject* parent) :
 	GameObject(parent, "Player"),

@@ -4,8 +4,9 @@
 #include "../../Game/Stage/SkySphere.h"
 #include "../../Game/Target/TargetManager.h"
 #include "../../Game/UI/Timer.h"
+#include "../../Engine/Input.h"
 #include "../UI/PlayUI.h"
-
+#include "../UI/Option.h"
 //コンストラクタ
 PlayScene::PlayScene(GameObject* parent)
 	: GameObject(parent, "PlayScene"),
@@ -40,6 +41,21 @@ void PlayScene::Update()
 	}
 
 	frame++;
+
+	if (Input::IsKeyDown(DIK_O)) {
+		isOption_ = !isOption_;
+	}
+
+	if (isOption_) {
+	opt = Instantiate<Option>(this);
+	}
+	else {
+		if(opt!=nullptr)
+		opt->KillMe();
+	}
+	
+	
+	//選択された要素のupdateを回せるようにしたい
 }
 
 //描画

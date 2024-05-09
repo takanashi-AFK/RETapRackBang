@@ -173,6 +173,7 @@
     <ClCompile Include="Game\UI\Timer.cpp" />
     <ClCompile Include="Game\UI\PlayUI.cpp" />
     <ClCompile Include="GlobalValiable.cpp" />
+    <ClCompile Include="Game\UI\Option.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Manager\SoundManager.h" />
@@ -226,6 +227,7 @@
     <ClInclude Include="Game\UI\Timer.h" />
     <ClInclude Include="Game\UI\PlayUI.h" />
     <ClInclude Include="GlobalValiable.h" />
+    <ClInclude Include="Game\UI\Option.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">

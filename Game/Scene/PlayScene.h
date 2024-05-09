@@ -4,12 +4,16 @@
 #include <array>
 //テストシーンを管理するクラス
 class Timer;
+class Option;
 
 class PlayScene : public GameObject
 {
 private:
 	int screenWidth;		//スクリーンの幅
 	int screenHeight;	//スクリーンの高さ
+
+	bool isOption_;
+	Option* opt;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）

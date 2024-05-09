@@ -7,7 +7,8 @@ TargetManager::TargetManager(GameObject* parent):
 	isTargetBroken_(false),
 	pSp{}, previousPos_{},
 	targetPlace_{},
-	xPos_{}, yPos_{}
+	xPos_{}, yPos_{},
+	overlapping_(false)
 {
 }
 
@@ -97,6 +98,7 @@ void TargetManager::ReGenerateTarget()
 				}
 			}
 		} while (overlapping_);
+
 
 		pSp[brokenTarget_] = Instantiate<SphereTarget>(this);
 		pSp[brokenTarget_]->SetPosition(targetPlace_[xPos_][yPos_]);
