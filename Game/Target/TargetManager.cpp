@@ -39,6 +39,7 @@ void TargetManager::OnAction(XMFLOAT3 pos)
 
 void TargetManager::GenerateTarget()
 {
+	//ターゲットの位置を決める
 	for (int y = 0; y < PLACE_SIZE; y++)
 		for (int x = 0; x < PLACE_SIZE; x++) {
 			targetPlace_[x][y] = XMFLOAT3(PLACE_OUTSET * x, PLACE_OUTSET * y + PLACE_HEIGHT_OUTSET, PLACE_DEPTH);
@@ -51,52 +52,55 @@ void TargetManager::GenerateTarget()
 	pSp[0]->SetPosition(targetPlace_[xPos_][yPos_]);
 	previousPos_[0] = targetPlace_[xPos_][yPos_];
 
-	//もし1と重なってたら
-	do {
-		xPos_ = rand() % PLACE_SIZE;
-		yPos_ = rand() % PLACE_SIZE;
-	} while (previousPos_[0].x == targetPlace_[xPos_][yPos_].x &&
-		previousPos_[0].y == targetPlace_[xPos_][yPos_].y);
-	pSp[1] = Instantiate<SphereTarget>(this);
-	pSp[1]->SetPosition(targetPlace_[xPos_][yPos_]);
-	previousPos_[1] = targetPlace_[xPos_][yPos_];
+	for (int i = 1; i < TARGET_NUM; i++) {
+
+		do {
+			xPos_ = rand() % PLACE_SIZE;
+			yPos_ = rand() % PLACE_SIZE;
+
+			//previousPos_内のすべての要素との重なりをチェック
+			for (const auto& pos : previousPos_) {
+				if (pos.x == targetPlace_[xPos_][yPos_].x && pos.y == targetPlace_[xPos_][yPos_].y) {
+					overlapping_ = true;
+					break;
+				}
+			}
+			overlapping_ = false;
+		} while (overlapping_);
 
 
-	//もし１と、２と重なってたら
-	do {
-		xPos_ = rand() % PLACE_SIZE;
-		yPos_ = rand() % PLACE_SIZE;
-	} while (previousPos_[0].x == targetPlace_[xPos_][yPos_].x &&
-		previousPos_[0].y == targetPlace_[xPos_][yPos_].y ||
-		previousPos_[1].x == targetPlace_[xPos_][yPos_].x &&
-		previousPos_[1].y == targetPlace_[xPos_][yPos_].y);
+		pSp[i] = Instantiate<SphereTarget>(this);
+		pSp[i]->SetPosition(targetPlace_[xPos_][yPos_]);
+		previousPos_[i] = targetPlace_[xPos_][yPos_];
+	}
 
-	pSp[2] = Instantiate<SphereTarget>(this);
-	pSp[2]->SetPosition(targetPlace_[xPos_][yPos_]);
-	previousPos_[2] = targetPlace_[xPos_][yPos_];
 }
 
 void TargetManager::ReGenerateTarget()
 {
 	
 	for (int i = 0; i < TARGET_NUM; i++)
-		if (brokenTargetPos_.x == previousPos_[i].x && brokenTargetPos_.y == previousPos_[i].y)
+		if (brokenTargetPos_.x == previousPos_[i].x && brokenTargetPos_.y == previousPos_[i].y) {
 			brokenTarget_ = i;
+			break;
+		}
 
-	//もし１と、２と重なってたら
-	do {
-		xPos_ = rand() % PLACE_SIZE;
-		yPos_ = rand() % PLACE_SIZE;
-	} while (previousPos_[0].x == targetPlace_[xPos_][yPos_].x &&
-		previousPos_[0].y == targetPlace_[xPos_][yPos_].y ||
-		previousPos_[1].x == targetPlace_[xPos_][yPos_].x &&
-		previousPos_[1].y == targetPlace_[xPos_][yPos_].y ||
-		previousPos_[2].x == targetPlace_[xPos_][yPos_].x &&
-		previousPos_[2].y == targetPlace_[xPos_][yPos_].y);
+		do {
+			xPos_ = rand() % PLACE_SIZE;
+			yPos_ = rand() % PLACE_SIZE;
+			overlapping_ = false;
+			//previousPos_内のすべての要素との重なりをチェック
+			for (const auto& pos : previousPos_) {
+				if (pos.x == targetPlace_[xPos_][yPos_].x && pos.y == targetPlace_[xPos_][yPos_].y) {
+					overlapping_ = true;
+					break;
+				}
+			}
+		} while (overlapping_);
 
-	pSp[brokenTarget_] = Instantiate<SphereTarget>(this);
-	pSp[brokenTarget_]->SetPosition(targetPlace_[xPos_][yPos_]);
-	previousPos_[brokenTarget_] = targetPlace_[xPos_][yPos_];
+		pSp[brokenTarget_] = Instantiate<SphereTarget>(this);
+		pSp[brokenTarget_]->SetPosition(targetPlace_[xPos_][yPos_]);
+		previousPos_[brokenTarget_] = targetPlace_[xPos_][yPos_];
 
-	isTargetBroken_ = false;
+		isTargetBroken_ = false;
 }

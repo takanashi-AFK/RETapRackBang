@@ -48,7 +48,7 @@ void Gun::Update()
 		TargetManager* tm = (TargetManager*)FindObject("TargetManager");
 		Player* pp = (Player*)FindObject("Player");
 
-		std::array<SphereTarget*, 3> targetList = tm->GetSphereTarget();
+		std::array<SphereTarget*, TARGET_NUM> targetList = tm->GetSphereTarget();
 
 
 		XMFLOAT3 pPos;

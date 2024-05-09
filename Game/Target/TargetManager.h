@@ -7,7 +7,7 @@
 //テストシーンを管理するクラス
 
 const int PLACE_SIZE{ 4 };
-const int TARGET_NUM{ 3 };
+const int TARGET_NUM{ 5 };
 const float PLACE_OUTSET{ 3.f };
 const float PLACE_HEIGHT_OUTSET{ 5 };
 const float PLACE_DEPTH{ 35 };
@@ -23,6 +23,7 @@ private:
 
 	int brokenTarget_;
 	bool isTargetBroken_;
+	bool overlapping_;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
@@ -60,6 +61,6 @@ public:
 	/// 現在ゲームに出現しているターゲットのリストを取得
 	/// </summary>
 	/// <returns>すべてのターゲット</returns>
-	std::array<SphereTarget*, 3> GetSphereTarget() { return pSp; }
+	std::array<SphereTarget*, TARGET_NUM> GetSphereTarget() { return pSp; }
 
 };
