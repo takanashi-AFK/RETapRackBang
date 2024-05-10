@@ -27,6 +27,8 @@ void PlayScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<TargetManager>(this);
 	Instantiate<PlayUI>(this);
+
+	ShowCursor(false);
 }
 
 //çXêV
@@ -46,10 +48,12 @@ void PlayScene::Update()
 
 		if (isOption_) {
 			opt = Instantiate<Option>(this);
+			ShowCursor(true);
 		}
 		else {
 			if (opt != nullptr) {
 				opt->KillMe();
+				ShowCursor(false);
 			}
 		}
 	}
@@ -57,10 +61,9 @@ void PlayScene::Update()
 
 	if (!isOption_) {
 		SetCursorPos(screenWidth / 2, screenHeight / 2);
-		ShowCursor(true);
 	}
-	else {
-				ShowCursor(false);
+	else { 
+		
 	}
 
 

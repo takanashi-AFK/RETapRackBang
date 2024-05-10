@@ -14,6 +14,7 @@ void Option::Initialize()
 
 void Option::Update()
 {
+
 }
 
 void Option::Draw()

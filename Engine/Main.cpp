@@ -56,9 +56,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	int fpsLimit = GetPrivateProfileInt("GAME", "Fps", 60, ".\\setup.ini");				//FPS（画面更新速度）
 	int isDrawFps = GetPrivateProfileInt("DEBUG", "ViewFps", 0, ".\\setup.ini");		//キャプションに現在のFPSを表示するかどうか
 
-	srand(time(NULL));
-
-
 	//ウィンドウを作成
 	HWND hWnd = InitApp(hInstance, screenWidth, screenHeight, nCmdShow);
 
@@ -89,7 +86,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	//すべてのゲームオブジェクトの親となるオブジェクト
 	RootObject* pRootObject = new RootObject;
 	pRootObject->Initialize();
-
 
 	//メッセージループ（何か起きるのを待つ）
 	MSG msg;
@@ -289,7 +285,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE) {
-
 			PostQuitMessage(0);
 			return 0;
 		}
@@ -312,7 +307,7 @@ void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight)
 		SetWindowLong(hWnd, GWL_EXSTYLE, GetWindowLong(hWnd, GWL_EXSTYLE) | WS_EX_TOPMOST);
 		ShowWindow(hWnd, SW_MAXIMIZE);
 		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXMAXIMIZED), GetSystemMetrics(SM_CYMAXIMIZED), SWP_FRAMECHANGED);
-		ShowCursor(false);
+
 		
 	}
 	else {
@@ -327,6 +322,5 @@ void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight)
 		SetWindowLong(hWnd, GWL_EXSTYLE, dwExStyle);
 		SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, winRect.right - winRect.left, winRect.bottom - winRect.top, SWP_FRAMECHANGED);
 
-		ShowCursor(true);
 	}
 }
