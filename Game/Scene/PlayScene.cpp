@@ -33,7 +33,7 @@ void PlayScene::Initialize()
 void PlayScene::Update()
 {
 	static int frame;
-	SetCursorPos(screenWidth/2,screenHeight/2);
+	
 	Timer* pTimer = (Timer*)FindObject("Timer");
 	if (pTimer->GetTimerEnd()) {
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
@@ -41,20 +41,29 @@ void PlayScene::Update()
 	}
 
 	frame++;
-if (Input::IsKeyDown(DIK_O)) {
-    isOption_ = !isOption_;
+	if (Input::IsKeyDown(DIK_O)) {
+		isOption_ = !isOption_;
 
-	if (isOption_) {
-		opt = Instantiate<Option>(this);
-	}
-	else {
-		if (opt != nullptr) {
-			opt->KillMe();
+		if (isOption_) {
+			opt = Instantiate<Option>(this);
+		}
+		else {
+			if (opt != nullptr) {
+				opt->KillMe();
+			}
 		}
 	}
-}
-	
-	
+
+
+	if (!isOption_) {
+		SetCursorPos(screenWidth / 2, screenHeight / 2);
+		ShowCursor(true);
+	}
+	else {
+				ShowCursor(false);
+	}
+
+
 	//‘I‘ð‚³‚ê‚½—v‘f‚Ìupdate‚ð‰ñ‚¹‚é‚æ‚¤‚É‚µ‚½‚¢
 }
 
@@ -66,6 +75,7 @@ void PlayScene::Draw()
 //ŠJ•ú
 void PlayScene::Release()
 {
+	isOption_ = false;
 }
 
 

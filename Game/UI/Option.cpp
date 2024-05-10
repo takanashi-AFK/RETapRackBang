@@ -6,8 +6,10 @@ Option::Option(GameObject* parent)
 
 void Option::Initialize()
 {
-	optionImage_ = Image::Load("Scene/MenuImage/Scenario1ButtonSelected.png");
+	optionImage_ = Image::Load("UI/Option.png");
 	assert(optionImage_ >= 0);
+
+	Instantiate<Button>(this);
 }
 
 void Option::Update()

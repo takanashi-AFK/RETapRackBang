@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Engine/GameObject.h"
 #include "../../Engine/Image.h"
+#include "../UI/Button.h"
 
 class Option : public GameObject
 {

@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game\UI\Button.cpp" />
     <ClCompile Include="Game\Manager\SoundManager.cpp" />
     <ClCompile Include="Game\UI\CountDown.cpp" />
     <ClCompile Include="Game\UI\CrossHair.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Game\UI\Option.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game\UI\Button.h" />
     <ClInclude Include="Game\Manager\SoundManager.h" />
     <ClInclude Include="Game\UI\CountDown.h" />
     <ClInclude Include="Game\UI\CrossHair.h" />
