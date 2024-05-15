@@ -19,6 +19,10 @@ void Button::Initialize()
 	assert(normalButton_ >= 0);
 	selectButton_ = Image::Load("UI/Button/ExitSelect.png");
 	assert(selectButton_ >= 0);
+
+	transform_.scale_ = { 0.5,0.5,0 };
+	transform_.position_.x = 0.1f;
+	transform_.position_.y = -0.45f;
 	pTimer_ = (Timer*)FindObject("Timer");
 	pTimer_->Stop();
 }
@@ -27,7 +31,7 @@ void Button::Update()
 {
 	mousePos_ = Input::GetMousePosition();
 
-	isPushable = IsMouseInRect();
+	isPushable = IsMouseInRect(mousePos_);
 	if (isPushable && Input::IsMouseButtonDown(0)) {
 		SoundManager::PlayConfirmSound();
 		PostQuitMessage(0);
@@ -47,6 +51,9 @@ void Button::Draw()
 		Image::SetTransform(normalButton_, transform_);
 		Image::Draw(normalButton_);
 	}
+	
+	size = Image::GetSize(selectButton_);
+	center_ = XMFLOAT3(size.x,size.y, 0);
 }
 
 void Button::Release()
@@ -54,10 +61,18 @@ void Button::Release()
 	pTimer_->Start();
 }
 
-bool Button::IsMouseInRect()
+bool Button::IsMouseInRect(XMFLOAT3 mousePos)
 {
-	if (mousePos_.x > 1010 && mousePos_.x < 1320 && mousePos_.y > 670 && mousePos_.y < 830)
-		return true;
+	if (abs(mousePos.x - center_.x) > size.x / 2)
+		return false;
+	if (abs(mousePos.y - center_.y) > size.y / 2)
+		return false;
+	return true;
+}
 
-	return false;
+void Button::SetPosition(float x, float y)
+{
+	transform_.position_.x = (x - Direct3D::screenWidth_ / 2) / Direct3D::screenWidth_;
+	transform_.position_.y = -(y - Direct3D::screenHeight_ / 2) / (Direct3D::screenHeight_ / 2);
+
 }

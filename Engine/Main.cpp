@@ -38,7 +38,7 @@ const char* WIN_CLASS_NAME = "SampleGame";	//ウィンドウクラス名
 HWND InitApp(HINSTANCE hInstance, int screenWidth, int screenHeight, int nCmdShow);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight);
-bool g_isFullScreen = false;
+bool g_isFullScreen = true;
 
 // エントリーポイント
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -153,16 +153,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				ImGui_ImplDX11_NewFrame();
 				ImGui_ImplWin32_NewFrame();
 				ImGui::NewFrame();
-#ifdef _DEBUG
-				ImGui::Begin("Hello, world!");//ImGuiの処理を開始
-				{
-					//この中にしたい処理を記述
-					//描画されるボタンを押したら...
-					if (ImGui::Button("button")) {
-						PostQuitMessage(0);	//プログラム終了
-					}
-				}
-#endif // _DEBUG
+
 
 			
 
@@ -183,10 +174,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 				Transition::Draw();
 
-#ifdef _DEBUG
-
-				ImGui::End();//ImGuiの処理を終了
-#endif // _DEBUG
 				//ImGuiの描画処理
 				ImGui::Render();
 				ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

@@ -12,6 +12,10 @@ private:
 	int selectButton_;
 	XMFLOAT3 mousePos_;
 	bool isPushable;
+	int x, y;
+	XMFLOAT3 center_;
+	XMFLOAT3 size;
+
 	Timer* pTimer_;
 public:
 	Button(GameObject* parent);
@@ -20,6 +24,8 @@ public:
 	void Update() override;
 	void Draw() override;
 	void Release() override;
-	bool IsMouseInRect();
+
+	bool IsMouseInRect(XMFLOAT3 mousePos);
+	void SetPosition(float x,float y);
 };
 
