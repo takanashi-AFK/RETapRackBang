@@ -40,7 +40,6 @@ void Timer::Release()
 void Timer::Start()
 {
 	isCount_ = true;
-	currentTime_ = 0;
 }
 
 void Timer::Stop()

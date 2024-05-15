@@ -58,6 +58,15 @@ void PlayScene::Update()
 		}
 	}
 
+	Timer* pT = (Timer*)FindObject("Timer");
+
+	if (ImGui::Button("Stop")) {
+		pT->Stop();
+	}
+	if (ImGui::Button("Start")) {
+		pT->Start();
+	}
+
 
 	if (!isOption_) {
 		SetCursorPos(screenWidth / 2, screenHeight / 2);

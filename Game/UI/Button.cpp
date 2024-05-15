@@ -2,6 +2,8 @@
 
 #include "../Manager/SoundManager.h"
 #include "../../Engine/SceneManager.h"
+#include "../../Engine/ImGui/imgui.h"
+#include "Timer.h"
 
 Button::Button(GameObject* parent)
 	: GameObject(parent, "Button"),
@@ -17,6 +19,8 @@ void Button::Initialize()
 	assert(normalButton_ >= 0);
 	selectButton_ = Image::Load("UI/Button/ExitSelect.png");
 	assert(selectButton_ >= 0);
+	pTimer_ = (Timer*)FindObject("Timer");
+	pTimer_->Stop();
 }
 
 void Button::Update()
@@ -28,6 +32,9 @@ void Button::Update()
 		SoundManager::PlayConfirmSound();
 		PostQuitMessage(0);
 	}
+
+	ImGui::DragFloat2("Button Position", &transform_.position_.x, 0.01f,-1,1);
+	ImGui::DragFloat2("Button scale", &transform_.scale_.x, 0.01f,-1,1);
 }
 
 void Button::Draw()
@@ -44,6 +51,7 @@ void Button::Draw()
 
 void Button::Release()
 {
+	pTimer_->Start();
 }
 
 bool Button::IsMouseInRect()

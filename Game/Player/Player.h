@@ -14,6 +14,7 @@ private:
 	XMFLOAT3 rotateAngle_;
 	XMFLOAT3 newCenter_;
 public:
+	float sensitivity = 0.05f;
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
 	Player(GameObject* parent);

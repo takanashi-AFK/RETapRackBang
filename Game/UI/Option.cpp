@@ -1,5 +1,6 @@
 #include "Option.h"
-
+#include "../../Engine/ImGui/imgui.h"
+#include "../../Game/Player/Player.h"
 Option::Option(GameObject* parent)
 {
 }
@@ -14,7 +15,10 @@ void Option::Initialize()
 
 void Option::Update()
 {
-
+	ImGui::Begin("Option");
+	Player* pp = (Player*)FindObject("Player");
+	ImGui::DragFloat("sens", &pp->sensitivity,0.1f,0,10);
+	ImGui::End();
 }
 
 void Option::Draw()

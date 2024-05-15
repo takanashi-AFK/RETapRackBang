@@ -3,6 +3,8 @@
 #include "../../Engine/Input.h"
 #include "../../Engine/Image.h"
 #include "../Manager/SoundManager.h"
+
+class Timer;
 class Button :public GameObject
 {
 private:
@@ -10,6 +12,7 @@ private:
 	int selectButton_;
 	XMFLOAT3 mousePos_;
 	bool isPushable;
+	Timer* pTimer_;
 public:
 	Button(GameObject* parent);
 

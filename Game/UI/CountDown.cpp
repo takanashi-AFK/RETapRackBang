@@ -15,8 +15,8 @@ void CountDown::Initialize()
 		countImage_[i] = Image::Load("Scene/PlayImage/" + std::to_string(i + 1) + ".png");
 		assert(countImage_[i] >= 0);
 	}
-	pTimer = Instantiate<Timer>(this);
-	pTimer->SetTime(20);
+	pTimer_ = Instantiate<Timer>(this);
+	pTimer_->SetTime(20);
 
 	pPlayer = (Player*)FindObject("Player");
 	pPlayer->SetCanMove(false);
@@ -64,7 +64,7 @@ void CountDown::Draw()
 		Image::Draw(countImage_[3]);
 		//pPlayer->SetCanMove(true);
 		pGun->SetCanShot(true);
-		pTimer->Start();
+		pTimer_->Start();
 		break;
 	}
 

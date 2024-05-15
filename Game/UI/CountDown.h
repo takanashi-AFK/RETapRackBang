@@ -18,7 +18,7 @@ private:
 	STATE state;
 	int countImage_[4];
 	int frame;
-	Timer* pTimer;
+	Timer* pTimer_;
 	Gun* pGun;
 	Player* pPlayer;
 public:
