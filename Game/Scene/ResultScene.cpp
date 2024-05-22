@@ -1,6 +1,7 @@
 #include "ResultScene.h"
 #include "../../Engine/Image.h"
 
+
 ResultScene::ResultScene(GameObject* parent):
 	GameObject(parent,"ResultScene"),
 	resultImageHandle_(-1),
@@ -32,7 +33,7 @@ void ResultScene::Draw()
 	Image::SetTransform(resultImageHandle_, transform_);
 	Image::Draw(resultImageHandle_);
 
-	score_->Draw(500, 300, g_Score);
+	score_->Draw(500, 300, ScoreManager::GetScore());
 }
 
 void ResultScene::Release()

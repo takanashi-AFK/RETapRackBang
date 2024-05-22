@@ -43,7 +43,7 @@ void PlayScene::Update()
 	}
 
 	frame++;
-	if (Input::IsKeyDown(DIK_O)) {
+	/*if (Input::IsKeyDown(DIK_O)) {
 		isOption_ = !isOption_;
 
 		if (isOption_) {
@@ -58,25 +58,14 @@ void PlayScene::Update()
 		}
 	}
 
-	Timer* pT = (Timer*)FindObject("Timer");
-
-	if (ImGui::Button("Stop")) {
-		pT->Stop();
-	}
-	if (ImGui::Button("Start")) {
-		pT->Start();
-	}
-
-
 	if (!isOption_) {
 		SetCursorPos(screenWidth / 2, screenHeight / 2);
 	}
 	else { 
 		
-	}
+	}*/
+	SetCursorPos(screenWidth / 2, screenHeight / 2);
 
-
-	//‘I‘ð‚³‚ê‚½—v‘f‚Ìupdate‚ð‰ñ‚¹‚é‚æ‚¤‚É‚µ‚½‚¢
 }
 
 //•`‰æ

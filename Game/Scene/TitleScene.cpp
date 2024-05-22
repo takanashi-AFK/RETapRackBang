@@ -25,6 +25,7 @@ void TitleScene::Initialize()
 	assert(pressSpaceImageHandle_ >= 0);
 
 	spaceKeyTrans_.position_ = XMFLOAT3(0, -0.75, 0);
+	ShowCursor(true);
 }
 
 void TitleScene::Update()

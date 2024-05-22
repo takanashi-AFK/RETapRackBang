@@ -30,6 +30,8 @@ void Gun::Update()
 {
 	//もしマウスの左ボタンが押されたら
 	if (Input::IsMouseButtonDown(0) && canShot_) {
+
+		g_NumOfHit++;
 		//射撃音を再生
 		SoundManager::PlayShotSound();
 

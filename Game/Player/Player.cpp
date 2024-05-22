@@ -15,8 +15,6 @@ namespace {
 	const float upperlimit = -30.f;
 	const float lowerlimit = 50.f;
 	const float distance = 10.f;
-	
-
 }
 Player::Player(GameObject* parent) :
 	GameObject(parent, "Player"),

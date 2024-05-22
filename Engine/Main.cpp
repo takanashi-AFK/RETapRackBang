@@ -38,7 +38,7 @@ const char* WIN_CLASS_NAME = "SampleGame";	//ウィンドウクラス名
 HWND InitApp(HINSTANCE hInstance, int screenWidth, int screenHeight, int nCmdShow);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight);
-bool g_isFullScreen = true;
+bool g_isFullScreen = false;
 
 // エントリーポイント
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -51,8 +51,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetCurrentDirectory("Assets");
 
 	//初期化ファイル（setup.ini）から必要な情報を取得
-	int screenWidth = GetPrivateProfileInt("SCREEN", "Width", 800, ".\\setup.ini");		//スクリーンの幅
-	int screenHeight = GetPrivateProfileInt("SCREEN", "Height", 600, ".\\setup.ini");	//スクリーンの高さ
+	int screenWidth = GetPrivateProfileInt("SCREEN", "Width", 1280, ".\\setup.ini");		//スクリーンの幅
+	int screenHeight = GetPrivateProfileInt("SCREEN", "Height", 720, ".\\setup.ini");	//スクリーンの高さ
 	int fpsLimit = GetPrivateProfileInt("GAME", "Fps", 60, ".\\setup.ini");				//FPS（画面更新速度）
 	int isDrawFps = GetPrivateProfileInt("DEBUG", "ViewFps", 0, ".\\setup.ini");		//キャプションに現在のFPSを表示するかどうか
 
@@ -79,8 +79,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	//オーディオ（効果音）の準備
 	Audio::Initialize();
-
-	//Transition::Initialize();
 
 	//ルートオブジェクト準備
 	//すべてのゲームオブジェクトの親となるオブジェクト
@@ -154,9 +152,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				ImGui_ImplWin32_NewFrame();
 				ImGui::NewFrame();
 
-
-			
-
 				//全オブジェクトの更新処理
 				//ルートオブジェクトのUpdateを呼んだあと、自動的に子、孫のUpdateが呼ばれる
 				pRootObject->UpdateSub();
@@ -164,13 +159,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 				//トランジションの更新処理
 				Transition::Update();
 
-				//Transition::Update();
 				//全オブジェクトを描画
 				//ルートオブジェクトのDrawを呼んだあと、自動的に子、孫のUpdateが呼ばれる
 				pRootObject->DrawSub();
 				//エフェクトの描画
 				VFX::Draw();
-
 
 				Transition::Draw();
 
@@ -268,7 +261,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 		//マウスが動いた
 	case WM_MOUSEMOVE:
-		Input::SetMousePosition(LOWORD(lParam), HIWORD(lParam));
 		return 0;
 	case WM_KEYDOWN:
 		if (wParam == VK_ESCAPE) {
@@ -290,12 +282,13 @@ void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight)
 
 	if (g_isFullScreen) {
 		// フルスクリーンモードに切り替える
+	// ウィンドウスタイルをポップアップに変更
 		SetWindowLong(hWnd, GWL_STYLE, WS_POPUP);
 		SetWindowLong(hWnd, GWL_EXSTYLE, GetWindowLong(hWnd, GWL_EXSTYLE) | WS_EX_TOPMOST);
 		ShowWindow(hWnd, SW_MAXIMIZE);
-		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXMAXIMIZED), GetSystemMetrics(SM_CYMAXIMIZED), SWP_FRAMECHANGED);
+		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
+		ShowCursor(false);
 
-		
 	}
 	else {
 		DWORD dwStyle = WS_OVERLAPPEDWINDOW | WS_VISIBLE;
@@ -303,11 +296,13 @@ void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight)
 
 		// タイトルバーの高さを考慮してウィンドウのサイズを再設定
 		RECT winRect = { 0, 0, screenWidth, screenHeight };
-		AdjustWindowRect(&winRect, WS_OVERLAPPEDWINDOW, FALSE);
+		AdjustWindowRect(&winRect, WS_POPUP, FALSE);
 
 		SetWindowLong(hWnd, GWL_STYLE, dwStyle);
 		SetWindowLong(hWnd, GWL_EXSTYLE, dwExStyle);
-		SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, winRect.right - winRect.left, winRect.bottom - winRect.top, SWP_FRAMECHANGED);
+		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, winRect.right - winRect.left, winRect.bottom - winRect.top, SWP_FRAMECHANGED);
 
 	}
 }
+
+

@@ -3,6 +3,7 @@
 #include "../../Engine/ImGui/imgui.h"
 #include "TargetManager.h"
 #include "../../GlobalValiable.h"
+#include "../Manager/ScoreManager.h"
 
 SphereTarget::SphereTarget(GameObject* parent):
 	GameObject(parent,"SphereTarget"),
@@ -42,7 +43,7 @@ void SphereTarget::OnAction()
 	VFX::Start(bulletHit_);
 
 	tm->OnAction(pos);
-	g_Score++;
+	ScoreManager::AddScore();
 }
 
 void SphereTarget::InitBulletHitEff()
