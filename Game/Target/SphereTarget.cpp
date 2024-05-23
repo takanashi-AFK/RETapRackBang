@@ -44,6 +44,7 @@ void SphereTarget::OnAction()
 
 	tm->OnAction(pos);
 	ScoreManager::AddScore();
+	ScoreManager::AddNumOfHit();
 }
 
 void SphereTarget::InitBulletHitEff()

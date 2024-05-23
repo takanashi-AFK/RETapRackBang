@@ -36,6 +36,8 @@ public:
 	//ˆø”Fvalue	•\¦‚µ‚½‚¢’l
 	void Draw(int x, int y, int value);
 
+	void Draw(int x, int y, float value);
+
 	//‰ğ•ú
 	void Release();
 };

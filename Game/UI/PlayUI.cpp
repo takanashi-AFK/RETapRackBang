@@ -1,7 +1,7 @@
 #include "PlayUI.h"
 #include "CountDown.h"
 #include "CrossHair.h"
-
+#include "../Manager/ScoreManager.h"
 PlayUI::PlayUI(GameObject* parent)
 {
 }
@@ -13,6 +13,9 @@ void PlayUI::Initialize()
 
 	score_ = new Text;
 	score_->Initialize("mininumberBlack.png", 32, 34, 15);
+	
+	accuracy_ = new Text;
+	accuracy_->Initialize("mininumberBlack.png", 32, 34, 15);
 
 	transform_.position_.y = 0.55;
 	transform_.scale_ = { 1.25,1.25,1.25 };
@@ -30,7 +33,8 @@ void PlayUI::Draw()
 	Image::SetTransform(BaseImage_, transform_);
 	Image::Draw(BaseImage_);
 
-	score_->Draw(500, 50, g_Score);
+	score_->Draw(500, 50, ScoreManager::GetScore());
+	accuracy_->Draw(800, 50, ScoreManager::GetAccuracy());
 }
 
 void PlayUI::Release()

@@ -1,5 +1,6 @@
 #include "ResultScene.h"
 #include "../../Engine/Image.h"
+#include "../Manager/ScoreManager.h"
 
 
 ResultScene::ResultScene(GameObject* parent):

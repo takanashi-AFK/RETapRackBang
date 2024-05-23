@@ -11,6 +11,7 @@
 #include "../Target/SphereTarget.h"
 #include "../../GlobalValiable.h"
 #include"../Manager/SoundManager.h"
+#include "../Manager/ScoreManager.h"
 
 Gun::Gun(GameObject* parent) :
 	GameObject(parent, "Gun"),
@@ -30,8 +31,7 @@ void Gun::Update()
 {
 	//もしマウスの左ボタンが押されたら
 	if (Input::IsMouseButtonDown(0) && canShot_) {
-
-		g_NumOfHit++;
+		ScoreManager::AddNumOfShot();
 		//射撃音を再生
 		SoundManager::PlayShotSound();
 

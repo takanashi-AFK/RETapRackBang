@@ -1,5 +1,10 @@
 #include "ScoreManager.h"
 
+namespace ScoreManager{
+	int score_;
+	int numOfShot_;
+	int numOfHit_;
+}
 void ScoreManager::AddScore()
 {
 	score_++;
@@ -32,7 +37,10 @@ int ScoreManager::GetNumOfHit()
 
 float ScoreManager::GetAccuracy()
 {
-	return numOfShot_/numOfHit_;
+	if(numOfHit_ == 0 || numOfShot_ == 0)
+		return 0;
+	else
+	return (float)numOfHit_/numOfShot_*100;
 }
 
 void ScoreManager::Reset()

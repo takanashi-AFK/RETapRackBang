@@ -9,6 +9,7 @@ class PlayUI : public GameObject
 private:
 	//Text* time_;
 	Text* score_;
+	Text* accuracy_;
 	int BaseImage_;
 
 
