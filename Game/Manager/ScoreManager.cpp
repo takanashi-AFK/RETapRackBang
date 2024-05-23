@@ -5,10 +5,6 @@ namespace ScoreManager{
 	int numOfShot_;
 	int numOfHit_;
 }
-void ScoreManager::AddScore()
-{
-	score_++;
-}
 
 void ScoreManager::AddNumOfShot()
 {

@@ -7,7 +7,7 @@
 #include "../../Engine/ImGui/imgui.h"
 
 namespace {
-	const float speed = 0.5f;
+	const float SPEED = 0.5f;
 	const int camYOutset = 4;
 	const float camZOutset = 0.5f;
 	const float camXOutset = 90.f;
@@ -86,7 +86,7 @@ void Player::PlayerMove()
 	transform_.rotate_.y = rotationAngle;
 
 	//最終の移動ベクトルに対して、方向ベクトルをspeedで伸ばしたものを代入
-	XMVECTOR move = XMVector3Normalize(dir) * speed;
+	XMVECTOR move = XMVector3Normalize(dir) * SPEED;
 
 	//プレイヤーの位置に対して、上で作った移動ベクトルを足す
 	XMStoreFloat3(&transform_.position_, XMLoadFloat3(&transform_.position_) + move);
