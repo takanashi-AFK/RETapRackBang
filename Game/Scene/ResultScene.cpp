@@ -23,7 +23,7 @@ void ResultScene::Initialize()
 void ResultScene::Update()
 {
 	if (Input::IsKeyDown(DIK_SPACE)) {
-		SoundManager::PlayConfirmSound();
+	SoundManager::PlayConfirmSound();
 	SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 	pSceneManager->ChangeScene(SCENE_ID_TITLE, TID_BLACKOUT, 0.5f);
 	}
@@ -34,7 +34,7 @@ void ResultScene::Draw()
 	Image::SetTransform(resultImageHandle_, transform_);
 	Image::Draw(resultImageHandle_);
 
-	score_->Draw(500, 300, ScoreManager::GetScore());
+	score_->Draw(500, 300, ScoreManager::GetNumOfHit());
 }
 
 void ResultScene::Release()

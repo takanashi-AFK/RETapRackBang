@@ -1,5 +1,6 @@
 #include "TargetManager.h"
 
+
 TargetManager::TargetManager(GameObject* parent):
 	GameObject(parent, "TargetManager"),
 	brokenTargetPos_{},
@@ -46,16 +47,10 @@ void TargetManager::GenerateTarget()
 			targetPlace_[x][y] = XMFLOAT3(PLACE_OUTSET * x, PLACE_OUTSET * y + PLACE_HEIGHT_OUTSET, PLACE_DEPTH);
 		}
 
-	pSp[0] = Instantiate<SphereTarget>(this);
-	xPos_ = rand() % PLACE_SIZE;
-	yPos_ = rand() % PLACE_SIZE;
+	for (int i = 0; i < TARGET_NUM; i++) {
 
-	pSp[0]->SetPosition(targetPlace_[xPos_][yPos_]);
-	previousPos_[0] = targetPlace_[xPos_][yPos_];
-
-	for (int i = 1; i < TARGET_NUM; i++) {
-
-		do {
+		do {//‚±‚±ŠÖ”‰»‚µ‚½‚¢
+			overlapping_ = false;
 			xPos_ = rand() % PLACE_SIZE;
 			yPos_ = rand() % PLACE_SIZE;
 
@@ -66,9 +61,7 @@ void TargetManager::GenerateTarget()
 					break;
 				}
 			}
-			overlapping_ = false;
 		} while (overlapping_);
-
 
 		pSp[i] = Instantiate<SphereTarget>(this);
 		pSp[i]->SetPosition(targetPlace_[xPos_][yPos_]);

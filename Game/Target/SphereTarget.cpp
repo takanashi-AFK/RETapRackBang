@@ -43,7 +43,6 @@ void SphereTarget::OnAction()
 	VFX::Start(bulletHit_);
 
 	tm->OnAction(pos);
-	ScoreManager::AddScore();
 	ScoreManager::AddNumOfHit();
 }
 

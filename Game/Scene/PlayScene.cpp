@@ -7,6 +7,7 @@
 #include "../../Engine/Input.h"
 #include "../UI/PlayUI.h"
 #include "../UI/Option.h"
+#include "../Manager/ScoreManager.h"
 //コンストラクタ
 PlayScene::PlayScene(GameObject* parent)
 	: GameObject(parent, "PlayScene"),
@@ -18,8 +19,7 @@ PlayScene::PlayScene(GameObject* parent)
 //初期化
 void PlayScene::Initialize()
 {
-
-	g_Score = 0;
+	ScoreManager::Reset();
 	screenWidth = GetSystemMetrics(SM_CXSCREEN);
 	screenHeight = GetSystemMetrics(SM_CYSCREEN);
 	Instantiate<SkySphere>(this);

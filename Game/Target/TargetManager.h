@@ -6,11 +6,14 @@
 #include <array>
 //テストシーンを管理するクラス
 
-const int PLACE_SIZE{ 4 };
-const int TARGET_NUM{ 5 };
-const float PLACE_OUTSET{ 3.f };
-const float PLACE_HEIGHT_OUTSET{ 5 };
-const float PLACE_DEPTH{ 35 };
+namespace
+{
+	const int PLACE_SIZE{ 4 };
+	const int TARGET_NUM{ 5 };
+	const float PLACE_OUTSET{ 3.f };
+	const float PLACE_HEIGHT_OUTSET{ 5 };
+	const float PLACE_DEPTH{ 35 };
+}
 
 class TargetManager : public GameObject
 {

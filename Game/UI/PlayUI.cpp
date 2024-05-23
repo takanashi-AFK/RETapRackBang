@@ -33,7 +33,7 @@ void PlayUI::Draw()
 	Image::SetTransform(BaseImage_, transform_);
 	Image::Draw(BaseImage_);
 
-	score_->Draw(500, 50, ScoreManager::GetScore());
+	score_->Draw(500, 50, ScoreManager::GetNumOfHit());
 	accuracy_->Draw(800, 50, ScoreManager::GetAccuracy());
 }
 
