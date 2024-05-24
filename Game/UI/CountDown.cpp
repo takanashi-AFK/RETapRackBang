@@ -19,7 +19,7 @@ void CountDown::Initialize()
 	pTimer_->SetTime(20);
 
 	pPlayer = (Player*)FindObject("Player");
-	pPlayer->SetCanMove(false);
+//	pPlayer->SetCanMove(false);
 
 	pGun = (Gun*)FindObject("Gun");
 	pGun->SetCanShot(false);

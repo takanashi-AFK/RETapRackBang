@@ -5,6 +5,7 @@
 #include "../../Engine/Model.h"
 #include "../Gun/Gun.h"
 #include "../../Engine/ImGui/imgui.h"
+#include "../Stage/SimpleStage.h"
 
 namespace {
 	const float SPEED = 0.5f;
@@ -16,6 +17,7 @@ namespace {
 	const float lowerlimit = 50.f;
 	const float distance = 10.f;
 }
+
 Player::Player(GameObject* parent) :
 	GameObject(parent, "Player"),
 	newCenter_{},
@@ -35,12 +37,35 @@ void Player::Initialize()
 
 	//銃のインスタンスを生成
 	pGun = Instantiate<Gun>(this);
+	
 }
 
 void Player::Update()
 {
 	PlayerMove();
 	TPSCam();
+
+	SimpleStage* pStage = (SimpleStage*)FindObject("SimpleStage");   
+	int hGroundModel = pStage->GetModelHandle();   
+	{
+		RayCastData downRayData;
+		downRayData.start = transform_.position_;   //レイの発射位置
+		downRayData.dir = XMFLOAT3(0, -1, 0);       //レイの方向
+		Model::RayCast(hGroundModel, &downRayData); //レイを発射
+		//下方向
+		if (downRayData.hit){
+			transform_.position_.y -= downRayData.dist;
+		}
+
+		RayCastData rightRayData;
+		rightRayData.start = transform_.position_;
+		rightRayData.dir = XMFLOAT3(1, 0, 0);
+		Model::RayCast(hGroundModel, &rightRayData);
+		if (rightRayData.dist < 1) {
+			transform_.position_.x -= (rightRayData.dist);
+		}
+	}
+	
 }
 
 void Player::Draw()
