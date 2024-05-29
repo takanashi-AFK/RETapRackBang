@@ -56,8 +56,8 @@ void Player::Update()
 		downRayData.dir = XMFLOAT3(0, -1, 0);       // レイの方向（下方向）
 		Model::RayCast(hGroundModel, &downRayData); // レイを発射
 		// 下方向
-		if (downRayData.hit<1) {
-			transform_.position_.y -= downRayData.dist-0.001;
+		if (downRayData.dist < 0.5f) {
+			transform_.position_.y -= downRayData.dist;
 		}
 
 		RayCastData rightRayData;
@@ -65,8 +65,9 @@ void Player::Update()
 		rightRayData.dir = XMFLOAT3(1, 0, 0);       // レイの方向（右方向）
 		Model::RayCast(hGroundModel, &rightRayData); // レイを発射
 		// 右方向
-		if (rightRayData.hit < 1) {
-			transform_.position_.x -= rightRayData.dist - 0.001;
+		if (rightRayData.dist < 0.5f) {
+			XMVECTOR length = { (PLAYER_MODEL_SIZE.x / 2) - std::abs(rightRayData.dist),0,0 };
+			XMStoreFloat3(&transform_.position_, XMLoadFloat3(&transform_.position_) - length);
 		}
 
 		RayCastData leftRayData;
@@ -74,8 +75,30 @@ void Player::Update()
 		leftRayData.dir = XMFLOAT3(-1, 0, 0);       // レイの方向（左方向）
 		Model::RayCast(hGroundModel, &leftRayData); // レイを発射
 		// 左方向
-		if (leftRayData.hit < 1) {
-			transform_.position_.x += leftRayData.dist;
+		if (leftRayData.dist < 0.5f) {
+			XMVECTOR length = { (PLAYER_MODEL_SIZE.x / 2) - std::abs(leftRayData.dist),0,0 };
+			XMStoreFloat3(&transform_.position_, XMLoadFloat3(&transform_.position_) + length);
+		}
+
+		RayCastData frontRayData;
+		frontRayData.start = transform_.position_;   // レイの発射位置
+		frontRayData.dir = XMFLOAT3(0, 0, 1);        // レイの方向（左方向）
+		Model::RayCast(hGroundModel, &frontRayData); // レイを発射
+
+		// 奥方向
+		if (frontRayData.dist < 0.5f) {
+			XMVECTOR length = {0,0,(PLAYER_MODEL_SIZE.z / 2) + std::abs(frontRayData.dist) };
+			XMStoreFloat3(&transform_.position_, XMLoadFloat3(&transform_.position_) - length);
+		}
+
+		RayCastData backRayData;
+		backRayData.start = transform_.position_;   // レイの発射位置
+		backRayData.dir = XMFLOAT3(0, 0, -1);       // レイの方向（左方向）
+		Model::RayCast(hGroundModel, &backRayData); // レイを発射
+		// 手前方向
+		if (backRayData.dist < 0.5f) {
+			XMVECTOR length = { 0,0, (PLAYER_MODEL_SIZE.z / 2) - std::abs(backRayData.dist) };
+			XMStoreFloat3(&transform_.position_, XMLoadFloat3(&transform_.position_) + length);
 		}
 		
 	}
