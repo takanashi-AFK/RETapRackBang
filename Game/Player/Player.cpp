@@ -16,6 +16,7 @@ namespace {
 	const float upperlimit = -30.f;
 	const float lowerlimit = 50.f;
 	const float distance = 10.f;
+	const XMFLOAT3 PLAYER_MODEL_SIZE = { 1.0f,1.0f,1.0f };
 }
 
 Player::Player(GameObject* parent) :
@@ -46,24 +47,37 @@ void Player::Update()
 	TPSCam();
 
 	SimpleStage* pStage = (SimpleStage*)FindObject("SimpleStage");   
-	int hGroundModel = pStage->GetModelHandle();   
+	int hGroundModel = pStage->GetModelHandle();  
+
+
 	{
 		RayCastData downRayData;
-		downRayData.start = transform_.position_;   //レイの発射位置
-		downRayData.dir = XMFLOAT3(0, -1, 0);       //レイの方向
-		Model::RayCast(hGroundModel, &downRayData); //レイを発射
-		//下方向
-		if (downRayData.hit){
-			transform_.position_.y -= downRayData.dist;
+		downRayData.start = transform_.position_;   // レイの発射位置
+		downRayData.dir = XMFLOAT3(0, -1, 0);       // レイの方向（下方向）
+		Model::RayCast(hGroundModel, &downRayData); // レイを発射
+		// 下方向
+		if (downRayData.hit<1) {
+			transform_.position_.y -= downRayData.dist-0.001;
 		}
 
 		RayCastData rightRayData;
-		rightRayData.start = transform_.position_;
-		rightRayData.dir = XMFLOAT3(1, 0, 0);
-		Model::RayCast(hGroundModel, &rightRayData);
-		if (rightRayData.dist < 1) {
-			transform_.position_.x -= (rightRayData.dist);
+		rightRayData.start = transform_.position_;  // レイの発射位置
+		rightRayData.dir = XMFLOAT3(1, 0, 0);       // レイの方向（右方向）
+		Model::RayCast(hGroundModel, &rightRayData); // レイを発射
+		// 右方向
+		if (rightRayData.hit < 1) {
+			transform_.position_.x -= rightRayData.dist - 0.001;
 		}
+
+		RayCastData leftRayData;
+		leftRayData.start = transform_.position_;   // レイの発射位置
+		leftRayData.dir = XMFLOAT3(-1, 0, 0);       // レイの方向（左方向）
+		Model::RayCast(hGroundModel, &leftRayData); // レイを発射
+		// 左方向
+		if (leftRayData.hit < 1) {
+			transform_.position_.x += leftRayData.dist;
+		}
+		
 	}
 	
 }

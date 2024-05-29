@@ -28,14 +28,14 @@ void PlayScene::Initialize()
 	Instantiate<TargetManager>(this);
 	Instantiate<PlayUI>(this);
 
-	ShowCursor(false);
 }
 
 //XV
 void PlayScene::Update()
 {
 	static int frame;
-	
+
+	ShowCursor(false);
 	Timer* pTimer = (Timer*)FindObject("Timer");
 	if (pTimer->GetTimerEnd()) {
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");

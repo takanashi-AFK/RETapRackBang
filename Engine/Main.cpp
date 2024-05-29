@@ -33,12 +33,12 @@
 //定数宣言
 const char* WIN_CLASS_NAME = "SampleGame";	//ウィンドウクラス名
 
+bool g_isFullScreen = true;
 
 //プロトタイプ宣言
 HWND InitApp(HINSTANCE hInstance, int screenWidth, int screenHeight, int nCmdShow);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight);
-bool g_isFullScreen = false;
 
 // エントリーポイント
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -220,8 +220,9 @@ HWND InitApp(HINSTANCE hInstance, int screenWidth, int screenHeight, int nCmdSho
 	RegisterClassEx(&wc);
 
 	//ウィンドウサイズの計算
-	RECT winRect = { 0, 0, screenWidth, screenHeight };
-	AdjustWindowRect(&winRect, WS_POPUP, FALSE);
+	//RECT winRect = { 0, 0, screenWidth, screenHeight };
+	//AdjustWindowRect(&winRect, WS_POPUP, FALSE);
+	RECT winRect = { 0, 0, GetSystemMetrics(SM_CXMAXIMIZED), GetSystemMetrics(SM_CYMAXIMIZED) };
 
 	//タイトルバーに表示する内容
 	char caption[64];
@@ -282,26 +283,19 @@ void ToggleFullScreen(HWND hWnd, int screenWidth, int screenHeight)
 
 	if (g_isFullScreen) {
 		// フルスクリーンモードに切り替える
-	// ウィンドウスタイルをポップアップに変更
 		SetWindowLong(hWnd, GWL_STYLE, WS_POPUP);
 		SetWindowLong(hWnd, GWL_EXSTYLE, GetWindowLong(hWnd, GWL_EXSTYLE) | WS_EX_TOPMOST);
 		ShowWindow(hWnd, SW_MAXIMIZE);
-		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
+		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, GetSystemMetrics(SM_CXMAXIMIZED), GetSystemMetrics(SM_CYMAXIMIZED), SWP_FRAMECHANGED);
 		ShowCursor(false);
-
 	}
 	else {
-		DWORD dwStyle = WS_OVERLAPPEDWINDOW | WS_VISIBLE;
-		DWORD dwExStyle = WS_EX_OVERLAPPEDWINDOW;
-
-		// タイトルバーの高さを考慮してウィンドウのサイズを再設定
-		RECT winRect = { 0, 0, screenWidth, screenHeight };
-		AdjustWindowRect(&winRect, WS_POPUP, FALSE);
-
-		SetWindowLong(hWnd, GWL_STYLE, dwStyle);
-		SetWindowLong(hWnd, GWL_EXSTYLE, dwExStyle);
-		SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, winRect.right - winRect.left, winRect.bottom - winRect.top, SWP_FRAMECHANGED);
-
+		// ウィンドウモードに切り替える
+		SetWindowLong(hWnd, GWL_STYLE, WS_OVERLAPPEDWINDOW);
+		SetWindowLong(hWnd, GWL_EXSTYLE, WS_EX_OVERLAPPEDWINDOW);
+		ShowWindow(hWnd, SW_NORMAL);
+		SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, screenWidth, screenHeight, SWP_FRAMECHANGED);
+		ShowCursor(true);
 	}
 }
 

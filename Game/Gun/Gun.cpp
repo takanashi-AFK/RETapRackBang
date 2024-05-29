@@ -52,7 +52,6 @@ void Gun::Update()
 
 		std::array<SphereTarget*, TARGET_NUM> targetList = tm->GetSphereTarget();
 
-
 		XMFLOAT3 pPos;
 		RayCastData bullet;
 		

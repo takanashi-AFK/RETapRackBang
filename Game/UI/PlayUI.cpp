@@ -17,11 +17,8 @@ void PlayUI::Initialize()
 	accuracy_ = new Text;
 	accuracy_->Initialize("mininumberBlack.png", 32, 34, 15);
 
-	transform_.position_.y = 0.55;
-	transform_.scale_ = { 1.25,1.25,1.25 };
 	Instantiate<CountDown>(this);
 	Instantiate<CrossHair>(this);
-
 }
 
 void PlayUI::Update()
