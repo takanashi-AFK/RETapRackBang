@@ -19,8 +19,8 @@ void SplashScene::Update()
 	static int frame;
 
 #ifdef _DEBUG
-	ImGui::Begin("rueausu");
-	ImGui::Text("Splash");
+	/*ImGui::Begin("rueausu");
+	ImGui::Text("Splash");*/
 
 	if (ImGui::Button("SceneChange") || frame > 120) {
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");

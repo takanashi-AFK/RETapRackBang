@@ -37,8 +37,8 @@ void Button::Update()
 		PostQuitMessage(0);
 	}
 
-	ImGui::DragFloat2("Button Position", &transform_.position_.x, 0.01f,-1,1);
-	ImGui::DragFloat2("Button scale", &transform_.scale_.x, 0.01f,-1,1);
+	/*ImGui::DragFloat2("Button Position", &transform_.position_.x, 0.01f,-1,1);
+	ImGui::DragFloat2("Button scale", &transform_.scale_.x, 0.01f,-1,1);*/
 }
 
 void Button::Draw()

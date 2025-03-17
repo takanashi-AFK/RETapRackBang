@@ -43,7 +43,7 @@ void Player::Initialize()
 
 void Player::Update()
 {
-	PlayerMove();
+	// PlayerMove();
 	TPSCam();
 
 	SimpleStage* pStage = (SimpleStage*)FindObject("SimpleStage");   
